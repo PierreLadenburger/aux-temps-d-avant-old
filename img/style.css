@@ -1,0 +1,73 @@
+.navbar {
+	padding: 0;
+}
+
+.title {
+	font-size: 50px;
+	color: green;
+}
+
+.lead {
+	font-size: 60px;
+	color: red;
+}
+
+.body_all {
+	background-image: url("../toiles_de_jouy.jpg");
+	background-repeat: repeat-x;
+	background-size: 200px;	
+	background-position: top;
+	background-color: rgb(215, 216, 184);
+}
+
+.body_index {
+	background-color: rgb(215, 216, 184);
+}
+
+.titre_index {
+	font-family: Didot;
+	margin-top: 60px;
+	margin-bottom: 20px;
+	color: #0b2e13;
+	font-size: 30px;
+}
+
+.titre_all {
+	margin-top: 120px;
+	margin-bottom: 45px;
+	background : rgba(181, 97, 115, 0.7);
+	font-family: Didot;
+	padding: 5px 10px 5px 10px;
+	border: solid 2px white transparent;
+	color: rgba(215, 216, 184, 0.6);
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+	display: inline-block;
+}
+
+.resume {
+	padding: 80px 20px;
+}
+
+.footer_all
+{
+	background-color: #343a40 !important;
+	color: rgb(215, 216, 184);
+	padding: 5px 15px 5px 15px;
+}
+.mySlides {
+  display:none;
+}
+
+.slideshow-container {
+  width: 570px;
+	height: 360px;
+	display: block;
+	margin: auto;
+}
+
+.video {
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 20px;
+}
