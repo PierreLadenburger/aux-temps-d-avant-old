@@ -30,7 +30,7 @@ h2 {
   background-image: url(../toiles_de_jouy.jpg), url(../toiles_de_jouy.jpg);
   background-position: top left, top right;
   background-repeat: repeat-y, repeat-y;
-  background-size: 150px, 150px;
+  background-size: 175px, 175px;
 }
 
 .ui-datepicker .highlight a
@@ -90,8 +90,12 @@ h2 {
   border-radius: 5px;
 }
 
+.menu {
+  background-color: rgb(53, 57, 66);
+  border: none;
+}
+
 .slideshow-container {
-  height: 360px;
   display: block;
   border-radius: 5px;
   margin: auto;
@@ -190,15 +194,6 @@ textarea{
   border-color: rgb(248, 158, 35);
   color: white;
 }
-.outils {
-  width: 100%;
-  margin-top: 50px !important;
-  margin-bottom: 50px !important;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  display: block;
-}
 
 .rendu_img{
   width: 100%;
@@ -227,56 +222,12 @@ textarea{
   font-weight: 600;
   text-transform: uppercase; }
 
-/*@media (min-width: 992px) {
-  #sideNav {
-    text-align: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    width: 17rem;
-    height: 100vh; }
-  #sideNav .navbar-brand {
-    display: flex;
-    margin: auto auto 0;
-    padding: 0.5rem; }
-  #sideNav .navbar-brand .img-profile {
-    max-width: 10rem;
-    max-height: 10rem;
-    border: 0.5rem solid rgba(255, 255, 255, 0.2); }
-  #sideNav .navbar-collapse {
-    display: flex;
-    align-items: flex-start;
-    flex-grow: 0;
-    width: 100%;
-    margin-bottom: auto; }
-  #sideNav .navbar-collapse .navbar-nav {
-    flex-direction: column;
-    width: 100%; }
-  #sideNav .navbar-collapse .navbar-nav .nav-item {
-    display: block; }
-  #sideNav .navbar-collapse .navbar-nav .nav-item .nav-link {
-    display: block; } }
-*/
 section.resume-section {
   border-bottom: 2px solid rgba(181, 97, 115, 0.7);
   padding-top: 5rem !important;
   padding-bottom: 5rem !important; }
 section.resume-section .resume-item .resume-date {
   min-width: none; }
-/*
-@media (min-width: 768px) {
-  section.resume-section {
-    min-height: 100vh; }
-  section.resume-section .resume-item .resume-date {
-    min-width: 18rem; } }
-
-@media (min-width: 992px) {
-  section.resume-section {
-    padding-top: 3rem !important;
-    padding-bottom: 3rem !important; } }
-*/
 
 .bg-primary {
   background-color: #BD5D38 !important; }

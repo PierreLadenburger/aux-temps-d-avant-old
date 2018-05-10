@@ -42,22 +42,33 @@
 </head>
 
 <body style="font-family: Didot; font-size: 16px;">
-
-<nav class="navbar navbar-inverse navbar-fixed-top" style="margin: 0; border-radius: 0px 0px 0px 0px; background-color: rgb(53, 57, 66); border-bottom: none; font-size: 20px;">
-        <div class="navbar-header" style="padding-left: 135px;">
-            <a class="navbar-brand js-scroll-trigger" href="#apropos" style="font-size: 20px; color: #d7c9b8;"><i class="fa fa-home"></i> Aux Temps D'Avant</a>
+<nav class="navbar navbar-default navbar-fixed-top menu">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand js-scroll-trigger" href="#apropos"  style="color: #d7c9b8;"><i class="fa fa-home"></i> Aux Temps D'Avant</a>
         </div>
-        <ul class="nav navbar-nav navbar-right" style="padding-right: 135px;">
-            <li><a class="nav-link js-scroll-trigger" href="#forge" style="color: #d7c9b8;"><i class="fa fa-bed"></i> La Forge</a></li>
-            <li><a class="nav-link js-scroll-trigger" href="#grange" style="color: #d7c9b8;"><i class="fa fa-bed"></i> La Grange</a></li>
-            <li><a class="nav-link js-scroll-trigger" href="#alcove" style="color: #d7c9b8;"><i class="fa fa-bed"></i> L'Alcôve</a></li>
-            <li><a class="nav-link js-scroll-trigger" href="#proximite" style="color: #d7c9b8;"><i class="fa fa-map-marker"></i> Alentour</a></li>
-            <li><a class="nav-link js-scroll-trigger" href="#contact" style="color: #d7c9b8;"><i class="fa fa-phone"></i> Contact</a></li>
-            <li><a class="nav-link js-scroll-trigger" href="#" style="color: #d7c9b8;"><i class="fa fa-star"></i> Avis</a></li>
-        </ul>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a class="nav-link js-scroll-trigger" href="#forge" style="color: #d7c9b8;"><i class="fa fa-bed"></i> La Forge</a></li>
+                <li><a class="nav-link js-scroll-trigger" href="#grange" style="color: #d7c9b8;"><i class="fa fa-bed"></i> La Grange</a></li>
+                <li><a class="nav-link js-scroll-trigger" href="#alcove" style="color: #d7c9b8;"><i class="fa fa-bed"></i> L'Alcôve</a></li>
+                <li><a class="nav-link js-scroll-trigger" href="#proximite" style="color: #d7c9b8;"><i class="fa fa-map-marker"></i> Alentour</a></li>
+                <li><a class="nav-link js-scroll-trigger" href="#contact" style="color: #d7c9b8;"><i class="fa fa-phone"></i> Contact</a></li>
+                <li><a class="nav-link js-scroll-trigger" href="#" style="color: #d7c9b8;"><i class="fa fa-star"></i> Avis</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
 </nav>
 <div class="background-style">
-    <div class="container" style="background-color: #d7c9b8; max-width: 1240px; font-family: Didot;">
+    <div class="container" style="background-color: #d7c9b8; font-family: Didot;">
     <section  class="resume-section" id="apropos">
         <div class="row">
             <div class="col-lg-6 col-md-6">
@@ -92,10 +103,10 @@
     <section class="resume-section" id="forge">
         <h2 class="titre_all">La Forge</h2>
         <div class="row">
-            <div class="col-lg-6 col-md-6">
+            <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="text">La Forge propose un espace de 31 m² pour 2 à 3 personnes. Rénovée dans un esprit traditionnel épuré et conservant toute son authenticité, elle offre tout le confort actuel dans une ambiance cosy.</div>
                 <div class="row" style="text-align: center">
-                    <div class="col-lg-4 col-md-4" style="text-align: left; margin-top: 10px;">
+                    <div class="col-lg-4 col-md-4 col-sm-4" style="text-align: left; margin-top: 10px;">
                         <div style="color : rgb(53, 57, 66);">Equipements</div>
                         <div style="color : rgb(53, 57, 66);"><img src="img/hairdryer.png" style="height: 20px; width: 20px; margin-right: 5px;">Sèche cheveux</div>
                         <div style="color : rgb(53, 57, 66);"><img src="img/shower.png" style="height: 20px; width: 20px; margin-right: 5px;">Douche à l'italienne</div>
@@ -103,7 +114,7 @@
                         <div style="color : rgb(53, 57, 66);"><img src="img/wifi.png" style="height: 20px; width: 20px; margin-right: 5px;">Wifi</div>
                         <div style="color : rgb(53, 57, 66);"><img src="img/television.png" style="height: 17px; width: 18px; margin-right: 5px;">Télévison</div>
                     </div>
-                    <div class="col-lg-4 col-md-4">
+                    <div class="col-lg-4 col-md-4 col-sm-4">
                         <div id="datepickerForge"></div>
                     </div>
                 </div>
@@ -126,7 +137,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-lg-6 col-md-6">
+            <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="slideshow-container">
                     <div class="mySlidesForges">
                         <img class="pictures" src="forge1.jpg">
@@ -141,7 +152,7 @@
     <section class="resume-section" id="grange">
         <h2 class="titre_all">La Grange</h2>
         <div class="row">
-            <div class="col-lg-6 col-md-6">
+            <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="slideshow-container">
                     <div class="mySlidesGranges">
                         <img class="pictures" src="grange1.jpg">
@@ -157,10 +168,10 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-6">
+            <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="text">La Grange propose un espace de 25 m2 pour 2 personnes.Dans le même esprit traditionnel et authentique et avec le même confort, elle s'inspire du romantisme allemand de la fin du 18ème siècle et offre donc une ambiance beaucoup plus ....romantique.</div>
                 <div class="row" style="text-align: center">
-                    <div class="col-md-4 col-lg-4" style="text-align: left; margin-top: 10px;">
+                    <div class="col-md-4 col-lg-4 col-sm-4" style="text-align: left; margin-top: 10px;">
                         <div style="color : rgb(53, 57, 66);">Equipements</div>
                         <div style="color : rgb(53, 57, 66);"><img src="img/hairdryer.png" style="height: 20px; width: 20px; margin-right: 5px;">Sèche cheveux</div>
                         <div style="color : rgb(53, 57, 66);"><img src="img/shower.png" style="height: 20px; width: 20px; margin-right: 5px;">Douche à l'italienne</div>
@@ -168,7 +179,7 @@
                         <div style="color : rgb(53, 57, 66);"><img src="img/wifi.png" style="height: 20px; width: 20px; margin-right: 5px;">Wifi</div>
                         <div style="color : rgb(53, 57, 66);"><img src="img/television.png" style="height: 17px; width: 18px; margin-right: 5px;">Télévison</div>
                     </div>
-                    <div style="margin-top: 20px;" class="col-md-4 col-md-4">
+                    <div style="margin-top: 20px;" class="col-md-4 col-md-4 col-sm-4">
                         <div id="datepickerGrange"></div>
                     </div>
                 </div>
@@ -194,10 +205,10 @@
     <section class="resume-section" id="alcove">
         <h2 class="titre_all">L'Alcôve</h2>
         <div class="row">
-            <div class="col-lg-6 col-md-6">
+            <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="text">L'Alcôve propose un espace de 23 m² pour 2 personnes. Toujours dans le même esprit, pour cette chambre, nous avons voulu allier une alcôve de tradition alsacienne et le 18ème siècle duquel date notre corps de ferme pour créer une ambiance plus intimiste et chaleureuse.</div>
                 <div class="row" style="text-align: center">
-                    <div class="col-md-4 col-lg-4" style="text-align: left; margin-top: 10px;">
+                    <div class="col-md-4 col-lg-4 col-sm-4" style="text-align: left; margin-top: 10px;">
                         <div style="color : rgb(53, 57, 66);">Equipements</div>
                         <div style="color : rgb(53, 57, 66);"><img src="img/hairdryer.png" style="height: 20px; width: 20px; margin-right: 5px;">Sèche cheveux</div>
                         <div style="color : rgb(53, 57, 66);"><img src="img/shower.png" style="height: 20px; width: 20px; margin-right: 5px;">Douche à l'italienne</div>
@@ -205,7 +216,7 @@
                         <div style="color : rgb(53, 57, 66);"><img src="img/wifi.png" style="height: 20px; width: 20px; margin-right: 5px;">Wifi</div>
                         <div style="color : rgb(53, 57, 66);"><img src="img/television.png" style="height: 17px; width: 18px; margin-right: 5px;">Télévison</div>
                     </div>
-                    <div style="margin-top: 20px;" class="col-md-4 col-md-4">
+                    <div style="margin-top: 20px;" class="col-md-4 col-md-4 col-sm-4">
                         <div id="datepickerAlcove"></div>
                     </div>
                 </div>
@@ -226,7 +237,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-lg-6 col-md-6">
+            <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="slideshow-container">
                     <div class="mySlidesAlcoves">
                         <img class="pictures" src="alcove1.jpg">
@@ -241,10 +252,10 @@
     <section class="resume-section" id="proximite">
         <h2 class="titre_all">Services</h2>
         <div class="row">
-            <div class="col-lg-6 col-md-6">
+            <div class="col-lg-6 col-md-6 col-sm-6">
                 <div id="mapservices"></div>
             </div>
-            <div class="col-lg-6 col-md-6">
+            <div class="col-lg-6 col-md-6 col-sm-6">
 
             </div>
         </div>
@@ -303,12 +314,11 @@
 <!-- Bootstrap core JavaScript -->
 
 <!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery-1.8.3.min.js"></script>
+<script src="vendor/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <!-- <script src="vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script> -->
 
 <!-- Plugin JavaScript -->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 <script type="text/javascript">
     var dayLocked18797 = ["2018-08-19","2018-08-20","2018-08-21","2018-08-22","2018-08-23","2018-08-24","2018-08-25","2018-08-26","2018-08-27","2018-08-28","2018-08-29","2018-08-30","2018-08-31","2018-09-01","2018-09-02","2018-09-03","2018-09-04","2018-05-10","2018-05-11","2018-05-12","2018-08-10","2018-08-11","2018-05-18","2018-05-19","2018-05-20","2018-05-17","2018-08-05","2018-08-06","2018-08-07"];
 
