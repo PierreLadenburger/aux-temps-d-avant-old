@@ -137,14 +137,14 @@
                         <div style="color : rgb(53, 57, 66); text-align: left"><strong> Disponibilités de La Forge</strong></div>
                         <div style="margin-top: 10px; font-size: 15px; " id="datepickerForge">
                             <?php
-                            $bdd = new PDO('mysql:host=localhost;dbname=chambres;charset=utf8', 'root', '');
+                         /*   $bdd = new PDO('mysql:host=localhost;dbname=chambres;charset=utf8', 'root', '');
 
                             $rep = $bdd->query('SELECT date FROM reservations WHERE chambre=\'forge\'');
                             $date  = array();
                             foreach ($rep as $repBis)
                             {
                                 $date[] = $repBis['date'];
-                            }
+                            }*/
                             ?>
                         </div>
                     </div>
@@ -325,6 +325,7 @@
 </div>
 </div>
 <?php
+/*
 $bdd = new PDO('mysql:host=localhost;dbname=chambres;charset=utf8', 'root', '');
 
 $data = $bdd->query('SELECT * FROM reservations WHERE chambre=\'forge\'');
@@ -335,7 +336,7 @@ foreach ($data as $dataBis)
     echo $dataBis['nom'] . '<br>';
     echo $dataBis['prénom'] . '<br>';
 }
-$data->closeCursor();
+$data->closeCursor();*/
 ?>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZwFBQDXkJtIr5ZGpmXKQpHcbd025gyWU&"></script>
@@ -367,8 +368,8 @@ $data->closeCursor();
 <!-- Plugin JavaScript -->
 <script type="text/javascript">
 
-    var dayLocked18797 = <?php echo json_encode($date); ?>;
-
+    //var dayLocked18797 = <?php echo json_encode($date); ?>;
+    var dayLocked18797 = ['20-05-2018'];
     function formatDateYYYYMMDD(date) {
         var yyyy = date.getFullYear().toString();
         var mm = (date.getMonth()+1).toString();
