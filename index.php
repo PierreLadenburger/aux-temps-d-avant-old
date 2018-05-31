@@ -135,7 +135,18 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6" style="right: 50px; margin-top: 20px;">
                         <div style="color : rgb(53, 57, 66); text-align: left"><strong> Disponibilités de La Forge</strong></div>
-                        <div style="margin-top: 10px; font-size: 15px; " id="datepickerForge"></div>
+                        <div style="margin-top: 10px; font-size: 15px; " id="datepickerForge">
+                            <?php
+                            $bdd = new PDO('mysql:host=localhost;dbname=chambres;charset=utf8', 'root', '');
+
+                            $rep = $bdd->query('SELECT date FROM reservations WHERE chambre=\'forge\'');
+                            $date  = array();
+                            foreach ($rep as $repBis)
+                            {
+                                $date[] = $repBis['date'];
+                            }
+                            ?>
+                        </div>
                     </div>
                 </div>
                 <table style="color: rgb(53, 57, 66); margin-top: 40px !important;">
@@ -314,21 +325,20 @@
 </div>
 </div>
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
+$bdd = new PDO('mysql:host=localhost;dbname=chambres;charset=utf8', 'root', '');
 
-$data = $bdd->query('SELECT * FROM news');
+$data = $bdd->query('SELECT * FROM reservations WHERE chambre=\'forge\'');
 
 foreach ($data as $dataBis)
 {
-    echo $dataBis['titre'] . '<br>';
-    echo $dataBis['contenu'] . '<br>';
-    echo $dataBis['commentaire'] . '<br>';
+    echo $dataBis['date'] . '<br>';
+    echo $dataBis['nom'] . '<br>';
+    echo $dataBis['prénom'] . '<br>';
 }
 $data->closeCursor();
 ?>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZwFBQDXkJtIr5ZGpmXKQpHcbd025gyWU&"></script>
-
 <script>
         var pos = {lat: 48.903975, lng: 7.661313};
         var map = new google.maps.Map(document.getElementById('mapservices'), {
@@ -349,10 +359,15 @@ $data->closeCursor();
 <script src="vendor/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <!-- <script src="vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script> -->
+<script>
+
+</script>
+
 
 <!-- Plugin JavaScript -->
 <script type="text/javascript">
-    var dayLocked18797 = ["2018-08-19","2018-08-20","2018-08-21","2018-08-22","2018-08-23","2018-08-24","2018-08-25","2018-08-26","2018-08-27","2018-08-28","2018-08-29","2018-08-30","2018-08-31","2018-09-01","2018-09-02","2018-09-03","2018-09-04","2018-05-10","2018-05-11","2018-05-12","2018-08-10","2018-08-11","2018-05-18","2018-05-19","2018-05-20","2018-05-17","2018-08-05","2018-08-06","2018-08-07"];
+
+    var dayLocked18797 = <?php echo json_encode($date); ?>;
 
     function formatDateYYYYMMDD(date) {
         var yyyy = date.getFullYear().toString();
@@ -369,43 +384,6 @@ $data->closeCursor();
     }
 
     $(document).ready(function () {
-        $(function() {
-            $('#play-video').on('click', function (ev) {
-                var pic = document.getElementsByClassName("video");
-                pic[0].style.display = "block";
-                var pic = document.getElementsByClassName("play-video");
-                pic[0].style.display = "none";
-                $("#video")[0].src += "?autoplay=1";
-                console.log($("#video")[0].src);
-                ev.preventDefault();
-
-            });
-        });
-        $(function() {
-            $( "#datepickerForge" ).datepicker({
-                prevText: 'Préc',
-                nextText: 'Suiv',
-                currentText: 'Aujourd\'hui',
-                dateFormat:"yy-mm-dd",
-                monthNames: ['Janvier','Fevrier','Mars','Avril','Mai','Juin',
-                    'Juillet','Aout','Septembre','Octobre','Novembre','Decembre'],
-                monthNamesShort: ['Jan','Fev','Mar','Avr','Mai','Jun',
-                    'Jul','Aou','Sep','Oct','Nov','Dec'],
-                dayNames: ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'],
-                dayNamesShort: ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'],
-                dayNamesMin: ['Di','Lu','Ma','Me','Je','Ve','Sa'],
-                firstDay: 1,
-                beforeShowDay: function(date) {
-                    var datestring = formatDateYYYYMMDD(date);
-                    for (var i = 0; i < dayLocked18797.length; i++) {
-                        if (dayLocked18797[i] == datestring) {
-                            return [true, 'highlight'];
-                        }
-                    }
-                    return [true, 'available'];
-                },
-            });
-        });
         $(function() {
             $( "#datepickerGrange" ).datepicker({
                 prevText: 'Préc',
@@ -447,8 +425,8 @@ $data->closeCursor();
                 firstDay: 1,
                 beforeShowDay: function(date) {
                     var datestring = formatDateYYYYMMDD(date);
-                    for (var i = 0; i < dayLocked18797.length; i++) {
-                        if (dayLocked18797[i] == datestring) {
+                    for (var i = 0; i < joursForge.length; i++) {
+                        if (joursForge[i] == datestring) {
                             return [true, 'highlight'];
                         }
                     }
@@ -458,7 +436,7 @@ $data->closeCursor();
         });
     });
 </script>
-
+<script type="text/javascript" src="planning.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.js"></script>
 <!-- Custom scripts for this template -->
