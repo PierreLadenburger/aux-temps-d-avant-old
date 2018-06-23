@@ -39,7 +39,7 @@
 
 </head>
 
-<body style="font-family: Didot; font-size: 16px;">
+<body style="background-color: #d7c9b8; font-family: Didot; font-size: 20px;" class="background-style">
 <nav class="navbar navbar-default navbar-fixed-top menu">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -60,53 +60,57 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
-<div class="background-style">
-    <div class="container" style="background-color: #d7c9b8; font-family: Didot;">
-        <section  class="resume-section" id="apropos">
-            <h2>ADMIN: Editer Planning</h2>
-            <h3>La Forge</h3>
-            <div class="row">
-                <div class="col-sm-6 col-md-6 col-lg-6">
-                    <?php
-                    $bdd = new PDO('mysql:host=localhost;dbname=chambres;charset=utf8', 'root', '');
-
-                    $rep = $bdd->query('SELECT date FROM reservations WHERE chambre=\'forge\'');
-                    $date  = array();
-                    foreach ($rep as $repBis)
-                    {
-                        $date[] = $repBis['date'];
-                    }
-                    ?>
-                    <div style="margin-top: 10px; font-size: 15px; " id="datepickerForge"></div>
+    <div class="container" style="font-family: Didot;">
+            <div class="row" style="padding-top: 8rem !important">
+                <div class="col-sm-2 col-md-2 col-lg-2">
+                    <nav class="navbar navbar-default navbar-fixed-side" style="background-color:  #353942; border: 2px solid  #d7c9b8;">
+                        <div class="container">
+                            <ul class="nav navbar-nav" style="float: none; margin: 0 -15px">
+                                <li style="border-bottom: 1px solid  #d7c9b8; float: none; "><a class="nav-link " href="forge.php" style="color: #d7c9b8;" ><i class="fa fa-bed"></i> La Forge</a></li>
+                                <li style="border-bottom: 1px solid  #d7c9b8; float: none;"><a class=" " href="grange.php" style="color: #d7c9b8;"><i class="fa fa-bed"></i> La Grange</a></li>
+                                <li style="border-bottom: 1px solid  #d7c9b8; float: none;"><a class="" href="alcove.php" style="color: #d7c9b8;"><i class="fa fa-bed"></i> L'Alcôve</a></li>
+                                <li style="float: none;"><a class="" href="alcove.php" style="color: #d7c9b8;"><i class="fa fa-list"></i> Liste</a></li>
+                            </ul>
+                        </div>
+                    </nav>
                 </div>
-                <div class="col-sm-6 col-md-6 col-lg-6">
-                    <form>
-                        <div class="form-group">
-                            <label style="min-width: 0;">Type d'édition</label>
-                            <select class="form-control" id="type">
-                                <option>ajouter</option>
-                                <option>supprimer</option>
-                            </select>
+                <div class="col-sm-10 col-md-10 col-lg-10">
+                    <div class="row">
+                        <div class="col-sm-4 col-md-4 col-lg-4">
+                            <h2 style="margin-top: 0px !important;">LA FORGE</h2>
+                            <div style="margin-top: 10px; font-size: 15px; " id="datepickerForge"></div>
                         </div>
-                        <div class="form-group">
-                            <label>Prénom</label>
-                            <input id="prenom" name="prenom" type="text" class="form-control">
+                        <div class="col-sm-8 col-md-8 col-lg-8">
+                            <div class="account-wall">
+                                <form class="form-signin">
+                                    <div class="form-group">
+                                        <select class="form-control" id="type">
+                                            <option>ajouter</option>
+                                            <option>supprimer</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <input id="prenom" name="prenom" type="text" class="form-control" placeholder="Prénom">
+                                    </div>
+                                    <div class="form-group">
+                                        <input id="nom" name="nom" type="text" class="form-control" placeholder="Nom">
+                                    </div>
+                                    <div class="form-group">
+                                        <input id="date" name="date" type="date" class="form-control">
+                                    </div>
+                                    <button class="btn btn-lg btn-primary btn-block" type="submit"
+                                            style="background : rgba(181, 97, 115, 0.7); border: solid 2px rgba(181, 97, 115, 0.7);">
+                                        Envoyez
+                                    </button>
+                                </form>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>Nom</label>
-                            <input id="nom" name="nom" type="text" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label>Date</label>
-                            <input id="date" name="date" type="date" class="form-control">
-                        </div>
-                        <div id="addForge" class="btn btn-primary">Submit</div>
-                    </form>
+                    </div>
+
                 </div>
             </div>
-        </section>
     </div>
-</div>
+
 
 <script src="vendor/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>

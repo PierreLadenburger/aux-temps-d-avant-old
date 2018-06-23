@@ -3,9 +3,19 @@
  * Copyright 2013-2017 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-resume/blob/master/LICENSE)
  */
+
+.container {
+  max-width: 1405px;
+}
+
 body {
   font-family: 'Open Sans', serif;
-  color: #868e96; }
+  color: #868e96;
+height: 100%}
+
+html{
+  height: 100%;
+}
 
 h1,
 h2,
@@ -26,11 +36,94 @@ h1 {
 h2 {
   font-size: 3.5rem; }
 
+* {
+  box-sizing: border-box;
+}
+
+img {
+  vertical-align: middle;
+}
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+  position: relative;
+}
+
+/* Hide the images by default */
+.mySlidesGallery {
+  display: none;
+  margin-top: 30px;
+  border-radius: 5px;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  width: auto;
+  padding: 16px;
+  color: white;
+  top: 45%;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 15px;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: white;
+  width: 100%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
 .background-style {
   background-image: url(../img/toiles_de_jouy.jpg), url(../img/toiles_de_jouy.jpg);
   background-position: top left, top right;
   background-repeat: repeat-y, repeat-y;
-  background-size: 175px, 175px;
+  background-size: 250px, 250px;
 }
 
 .ui-datepicker .highlight a {
@@ -141,11 +234,9 @@ h2 {
 
 form {
   margin: 0 auto;
-  width: 400px;
-  padding: 1em;
+  width: 500px;
   border: 1px solid #CCC;
   border-radius: 1em;
-  margin-top: 40px !important;
 }
 
 form div + div {
@@ -158,9 +249,13 @@ label {
   margin-bottom: 0px;
 }
 
+input {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
 input, textarea {
   font: 1em sans-serif;
-
+  margin-bottom: 15px;
   width: 300px;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
