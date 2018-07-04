@@ -1,3 +1,6 @@
+<?php
+    require_once "common.php";
+?>
 <html lang="en"><head>
 
     <meta charset="utf-8">
@@ -55,7 +58,6 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-        
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -63,22 +65,24 @@
     <div class="container" style="font-family: Didot;">
         <div class="row" style="padding-top: 8rem !important">
             <div class="col-sm-2 col-md-2 col-lg-2">
-                <nav class="navbar navbar-default navbar-fixed-side" style="background-color:  #353942; border: 2px solid  #d7c9b8;">
-                    <div class="container">
-                        <ul class="nav navbar-nav" style="float: none; margin: 0 -15px">
-                            <li style="border-bottom: 1px solid  #d7c9b8; float: none; "><a class="nav-link " href="forge.php" style="color: #d7c9b8;" ><i class="fa fa-bed"></i> La Forge</a></li>
-                            <li style="border-bottom: 1px solid  #d7c9b8; float: none;"><a class=" " href="grange.php" style="color: #d7c9b8;"><i class="fa fa-bed"></i> La Grange</a></li>
-                            <li style="border-bottom: 1px solid  #d7c9b8; float: none;"><a class="" href="alcove.php" style="color: #d7c9b8;"><i class="fa fa-bed"></i> L'Alcôve</a></li>
-                            <li style="float: none;"><a class="" href="alcove.php" style="color: #d7c9b8;"><i class="fa fa-list"></i> Liste</a></li>
-                        </ul>
-                    </div>
-                </nav>
+                <?php printSideMenu() ?>
             </div>
             <div class="col-sm-10 col-md-10 col-lg-10">
                 <div class="row">
                     <div class="col-sm-4 col-md-4 col-lg-4">
-                        <h2 style="margin-top: 0px !important;">L'ALCôVE</h2>
-                        <div style="margin-top: 10px; font-size: 15px; " id="datepickerForge"></div>
+                        <h2 style="font-family: Didot; margin-top: 0px !important;">L'ALCôVE</h2>
+                        <div style="margin-top: 10px; font-size: 15px; " id="datepickerAlcove">
+                            <?php
+                                $bdd = new PDO('mysql:host=localhost;dbname=aux-temps-d-avant;charset=utf8', 'adminCura', 'adminCura');
+
+                                $rep = $bdd->query('SELECT * FROM reservations WHERE chambre=\'alcove\'');
+                                $dateAlcove = array();
+                                foreach ($rep as $repBis)
+                                {
+                                    $dateAlcove[] = $repBis['date'];
+                                }
+                            ?>
+                        </div>
                     </div>
                     <div class="col-sm-8 col-md-8 col-lg-8">
                         <div class="account-wall">
@@ -115,26 +119,47 @@
 <script src="vendor/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <script>
+    var dateAlcove = <?php echo json_encode($dateAlcove); ?>;
 
-    var joursForge = <?php echo json_encode($date); ?>;
+    function formatDateYYYYMMDD(date) {
+        var yyyy = date.getFullYear().toString();
+        var mm = (date.getMonth()+1).toString();
+        var dd  = date.getDate().toString();
 
-    $( "#addForge" ).click(function() {
-        var type = $('#type').val();
-        var prenom = $('#prenom').val();
-        var nom = $('#nom').val();
-        var date = $('#date').val();
-        var dataString = "prenom=" + prenom + "&nom=" + nom + "&date=" + date + "&type=" + type;
-        $.ajax({
-            type: 'POST',
-            url: './editReservation.php',
-            data: dataString,
-            dataType: "html",
-            success: function(data){
-                var prenom = $('#prenom').val("");
-                var nom = $('#nom').val("");
-                var date = $('#date').val("");
-               // location.reload();
-            }
+        // CONVERT mm AND dd INTO chars
+        var mmChars = mm.split('');
+        var ddChars = dd.split('');
+
+        // CONCAT THE STRINGS IN YYYY-MM-DD FORMAT
+        var datestring = yyyy + '-' + (mmChars[1]?mm:"0"+mmChars[0]) + '-' + (ddChars[1]?dd:"0"+ddChars[0]);
+        return datestring;
+    }
+
+    $(document).ready(function () {
+        $(function () {
+            $("#datepickerAlcove").datepicker({
+                prevText: 'Préc',
+                nextText: 'Suiv',
+                currentText: 'Aujourd\'hui',
+                dateFormat: "yy-mm-dd",
+                monthNames: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin',
+                    'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
+                monthNamesShort: ['Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Jun',
+                    'Jul', 'Aou', 'Sep', 'Oct', 'Nov', 'Dec'],
+                dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+                dayNamesShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+                dayNamesMin: ['Di', 'Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa'],
+                firstDay: 1,
+                beforeShowDay: function (date) {
+                    var datestring = formatDateYYYYMMDD(date);
+                    for (var i = 0; i < dateAlcove.length; i++) {
+                        if (dateAlcove[i] === datestring) {
+                            return [true, 'highlight'];
+                        }
+                    }
+                    return [true, 'available'];
+                },
+            });
         });
     });
 </script>

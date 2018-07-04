@@ -1,3 +1,16 @@
+<?php
+    require_once 'common.php';
+
+if (isset($_POST['id']))
+{
+    $bdd = new PDO('mysql:host=localhost;dbname=aux-temps-d-avant;charset=utf8', 'adminCura', 'adminCura');
+    $del = $bdd->prepare("DELETE FROM reservations WHERE id = :id");
+    $del->execute(array(
+        "id" => $_POST['id'],
+    ));
+
+}
+?>
 <html lang="en"><head>
 
     <meta charset="utf-8">
@@ -55,7 +68,6 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li><a class="nav-link js-scroll-trigger" href="#" style="color: #d7c9b8;"><i class="fa fa-bed"></i> Editer</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -63,50 +75,76 @@
     <div class="container" style="font-family: Didot;">
             <div class="row" style="padding-top: 8rem !important">
                 <div class="col-sm-2 col-md-2 col-lg-2">
-                    <nav class="navbar navbar-default navbar-fixed-side" style="background-color:  #353942; border: 2px solid  #d7c9b8;">
-                        <div class="container">
-                            <ul class="nav navbar-nav" style="float: none; margin: 0 -15px">
-                                <li style="border-bottom: 1px solid  #d7c9b8; float: none; "><a class="nav-link " href="forge.php" style="color: #d7c9b8;" ><i class="fa fa-bed"></i> La Forge</a></li>
-                                <li style="border-bottom: 1px solid  #d7c9b8; float: none;"><a class=" " href="grange.php" style="color: #d7c9b8;"><i class="fa fa-bed"></i> La Grange</a></li>
-                                <li style="border-bottom: 1px solid  #d7c9b8; float: none;"><a class="" href="alcove.php" style="color: #d7c9b8;"><i class="fa fa-bed"></i> L'Alcôve</a></li>
-                                <li style="float: none;"><a class="" href="alcove.php" style="color: #d7c9b8;"><i class="fa fa-list"></i> Liste</a></li>
-                            </ul>
-                        </div>
-                    </nav>
+                    <?php printSideMenu() ?>
                 </div>
                 <div class="col-sm-10 col-md-10 col-lg-10">
                     <div class="row">
                         <div class="col-sm-4 col-md-4 col-lg-4">
-                            <h2 style="margin-top: 0px !important;">LA FORGE</h2>
-                            <div style="margin-top: 10px; font-size: 15px; " id="datepickerForge"></div>
+                            <h2 style="font-family: Didot;"><i class="fa fa-calendar"></i> Planning</h2>
+                            <div style="margin-top: 10px; font-size: 15px; " id="datepickerForge">
+                                <?php
+                                    $bdd = new PDO('mysql:host=localhost;dbname=aux-temps-d-avant;charset=utf8', 'adminCura', 'adminCura');
+
+                                    $rep = $bdd->query('SELECT * FROM reservations WHERE chambre=\'forge\'');
+                                    $dateForge = array();
+                                    foreach ($rep as $repBis)
+                                    {
+                                        $dateForge[] = $repBis['date'];
+                                    }
+                                ?>
+                            </div>
                         </div>
                         <div class="col-sm-8 col-md-8 col-lg-8">
-                            <div class="account-wall">
-                                <form class="form-signin">
+                            <h2 style="font-family: Didot;"><i class="fa fa-address-book"></i> Ajouter Réservation</h2>
+                            <div class="account-wall" style="margin-top: 30px;">
+                                <form class="form-signin" style="margin: 0">
                                     <div class="form-group">
-                                        <select class="form-control" id="type">
-                                            <option>ajouter</option>
-                                            <option>supprimer</option>
-                                        </select>
+                                        <input id="prenom" name="prenom" type="text" class="form-control" placeholder="Nom">
                                     </div>
                                     <div class="form-group">
-                                        <input id="prenom" name="prenom" type="text" class="form-control" placeholder="Prénom">
-                                    </div>
-                                    <div class="form-group">
-                                        <input id="nom" name="nom" type="text" class="form-control" placeholder="Nom">
+                                        <input id="nom" name="nom" type="text" class="form-control" placeholder="Prénom">
                                     </div>
                                     <div class="form-group">
                                         <input id="date" name="date" type="date" class="form-control">
                                     </div>
-                                    <button class="btn btn-lg btn-primary btn-block" type="submit"
+                                    <div class="btn btn-lg btn-primary btn-block" id="add"
                                             style="background : rgba(181, 97, 115, 0.7); border: solid 2px rgba(181, 97, 115, 0.7);">
-                                        Envoyez
-                                    </button>
+                                        Ajouter
+                                    </div>
                                 </form>
                             </div>
                         </div>
                     </div>
+                    <h2 style="font-family: Didot;"><i class="fa fa-list"></i> Liste</h2>
+                    <?php
+                    echo '<table style="color: rgb(53, 57, 66); width: 100%;">
+                          <thead>
+                            <tr>
+                                  <th class="in_table" scope="col">#</th>
+                                  <th class="in_table" scope="col">Nom</th>
+                                  <th class="in_table" scope="col">Prénom</th>
+                                  <th class="in_table" scope="col">Date</th>
+                                  <th class="in_table" scope="col">Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>';
+                    $bdd = new PDO('mysql:host=localhost;dbname=aux-temps-d-avant;charset=utf8', 'adminCura', 'adminCura');
 
+                    $rep = $bdd->query('SELECT * FROM reservations WHERE chambre=\'forge\'');
+                    foreach ($rep as $repBis)
+                    {
+                        echo '<tr>';
+                        echo '<td class="in_table" scope="col">' . $repBis['id'] . '</td>';
+                        echo '<td class="in_table">' . $repBis['nom'] . '</td>';
+                        echo '<td class="in_table">' . $repBis['prenom'] . '</td>';
+                        echo '<td class="in_table">' . $repBis['date'] . '</td>';
+                        echo '<td class="in_table"><i onclick=" $( \'#delete\' ).submit();" class="fa fa-trash"></i><form style="width: auto !important;" onsubmit="return confirm(\'dmd\');" method="post" id="delete"><input name="id" type="hidden" value="'. $repBis['id'] .'"></form></td>';
+                        echo '</tr>';
+                    }
+                    echo'                         
+                          </tbody>
+                    </table>'
+                    ?>
                 </div>
             </div>
     </div>
@@ -116,25 +154,71 @@
 <script type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <script>
 
-    var joursForge = <?php echo json_encode($date); ?>;
-
-    $( "#addForge" ).click(function() {
-        var type = $('#type').val();
+    function deleteUser()
+    {
+        $( "#delete" ).submit();
+    }
+    $( "#add" ).click(function() {
         var prenom = $('#prenom').val();
         var nom = $('#nom').val();
         var date = $('#date').val();
-        var dataString = "prenom=" + prenom + "&nom=" + nom + "&date=" + date + "&type=" + type;
-        $.ajax({
-            type: 'POST',
-            url: './editReservation.php',
-            data: dataString,
-            dataType: "html",
-            success: function(data){
-                var prenom = $('#prenom').val("");
-                var nom = $('#nom').val("");
-                var date = $('#date').val("");
-               // location.reload();
-            }
+
+        console.log(prenom, nom, date);
+        if (prenom !== '' && nom !== '' && date !== '')
+        {
+            var dataString = 'chambre=forge&prenom=' + prenom + '&nom=' + nom + "&date=" + date + "&type=add";
+            $.ajax({
+                type: "GET",
+                url: "editReservation.php",
+                data: dataString,
+                success: function(resultData){
+                    window.location.href = "forge.php";
+                }
+            });
+        }
+    });
+
+    var dateForge = <?php echo json_encode($dateForge); ?>;
+
+    function formatDateYYYYMMDD(date) {
+        var yyyy = date.getFullYear().toString();
+        var mm = (date.getMonth()+1).toString();
+        var dd  = date.getDate().toString();
+
+        // CONVERT mm AND dd INTO chars
+        var mmChars = mm.split('');
+        var ddChars = dd.split('');
+
+        // CONCAT THE STRINGS IN YYYY-MM-DD FORMAT
+        var datestring = yyyy + '-' + (mmChars[1]?mm:"0"+mmChars[0]) + '-' + (ddChars[1]?dd:"0"+ddChars[0]);
+        return datestring;
+    }
+
+    $(document).ready(function () {
+        $(function () {
+            $("#datepickerForge").datepicker({
+                prevText: 'Préc',
+                nextText: 'Suiv',
+                currentText: 'Aujourd\'hui',
+                dateFormat: "yy-mm-dd",
+                monthNames: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin',
+                    'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
+                monthNamesShort: ['Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Jun',
+                    'Jul', 'Aou', 'Sep', 'Oct', 'Nov', 'Dec'],
+                dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+                dayNamesShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+                dayNamesMin: ['Di', 'Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa'],
+                firstDay: 1,
+                beforeShowDay: function (date) {
+                    var datestring = formatDateYYYYMMDD(date);
+                    for (var i = 0; i < dateForge.length; i++) {
+                        if (dateForge[i] === datestring) {
+                            return [true, 'highlight'];
+                        }
+                    }
+                    return [true, 'available'];
+                },
+            });
         });
     });
 </script>

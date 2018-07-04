@@ -169,14 +169,14 @@
                                 Forge</strong></div>
                         <div style="margin-top: 10px; font-size: 15px; " id="datepickerForge">
                             <?php
-                            /*$bdd = new PDO('mysql:host=localhost;dbname=chambres;charset=utf8', 'root', '');
+                                $bdd = new PDO('mysql:host=localhost;dbname=aux-temps-d-avant;charset=utf8', 'adminCura', 'adminCura');
 
-                            $rep = $bdd->query('SELECT date FROM reservations WHERE chambre=\'forge\'');
-                            $date  = array();
-                            foreach ($rep as $repBis)
-                            {
-                                $date[] = $repBis['date'];
-                            }*/
+                                $rep = $bdd->query('SELECT * FROM reservations WHERE chambre=\'forge\'');
+                                $dateForge = array();
+                                foreach ($rep as $repBis)
+                                {
+                                    $dateForge[] = $repBis['date'];
+                                }
                             ?>
                         </div>
                     </div>
@@ -271,7 +271,18 @@
                     <div class="col-md-6 col-md-6 col-sm-6" style="margin-top: 20px;">
                         <div style="color : rgb(53, 57, 66); text-align: left;"><strong>Disponibilités de La
                                 Grange</strong></div>
-                        <div style="margin-top: 10px; font-size: 15px;" id="datepickerGrange"></div>
+                        <div style="margin-top: 10px; font-size: 15px;" id="datepickerGrange">
+                            <?php
+                                $bdd = new PDO('mysql:host=localhost;dbname=aux-temps-d-avant;charset=utf8', 'adminCura', 'adminCura');
+
+                                $rep = $bdd->query('SELECT * FROM reservations WHERE chambre=\'grange\'');
+                                $dateGrange = array();
+                                foreach ($rep as $repBis)
+                                {
+                                    $dateGrange[] = $repBis['date'];
+                                }
+                            ?>
+                        </div>
                     </div>
                 </div>
                 <div style="color : rgb(53, 57, 66); margin-top: 35px;"><strong>Tarifs</strong> (petit-déjeuner compris)
@@ -337,7 +348,18 @@
                     <div class="col-md-6 col-md-6 col-sm-6" style="margin-top: 20px;">
                         <div style="color : rgb(53, 57, 66); text-align: left"><strong>Disponibilités de
                                 L'Alcôve</strong></div>
-                        <div style="margin-top: 10px; font-size: 15px;" id="datepickerAlcove"></div>
+                        <div style="margin-top: 10px; font-size: 15px;" id="datepickerAlcove">
+                            <?php
+                                $bdd = new PDO('mysql:host=localhost;dbname=aux-temps-d-avant;charset=utf8', 'adminCura', 'adminCura');
+
+                                $rep = $bdd->query('SELECT * FROM reservations WHERE chambre=\'alcove\'');
+                                $dateAlcove = array();
+                                foreach ($rep as $repBis)
+                                {
+                                    $dateAlcove[] = $repBis['date'];
+                                }
+                            ?>
+                        </div>
                     </div>
                 </div>
                 <div style="color : rgb(53, 57, 66); margin-top: 35px;"><strong>Tarifs</strong> (petit-déjeuner compris)
@@ -445,8 +467,10 @@
 
 <!-- Plugin JavaScript -->
 <script type="text/javascript">
-    var dayLocked18797 = <?php echo json_encode($date); ?>;
-    //var dayLocked18797 = ['20-05-2018'];
+    var dateForge = <?php echo json_encode($dateForge); ?>;
+    var dateGrange = <?php echo json_encode($dateGrange); ?>;
+    var dateAlcove = <?php echo json_encode($dateAlcove); ?>;
+
     function formatDateYYYYMMDD(date) {
         var yyyy = date.getFullYear().toString();
         var mm = (date.getMonth()+1).toString();
@@ -463,6 +487,31 @@
 
     $(document).ready(function () {
         $(function() {
+            $( "#datepickerForge" ).datepicker({
+                prevText: 'Préc',
+                nextText: 'Suiv',
+                currentText: 'Aujourd\'hui',
+                dateFormat:"yy-mm-dd",
+                monthNames: ['Janvier','Fevrier','Mars','Avril','Mai','Juin',
+                    'Juillet','Aout','Septembre','Octobre','Novembre','Decembre'],
+                monthNamesShort: ['Jan','Fev','Mar','Avr','Mai','Jun',
+                    'Jul','Aou','Sep','Oct','Nov','Dec'],
+                dayNames: ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'],
+                dayNamesShort: ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'],
+                dayNamesMin: ['Di','Lu','Ma','Me','Je','Ve','Sa'],
+                firstDay: 1,
+                beforeShowDay: function(date) {
+                    var datestring = formatDateYYYYMMDD(date);
+                    for (var i = 0; i < dateForge.length; i++) {
+                        if (dateForge[i] === datestring) {
+                            return [true, 'highlight'];
+                        }
+                    }
+                    return [true, 'available'];
+                },
+            });
+        });
+        $(function() {
             $( "#datepickerGrange" ).datepicker({
                 prevText: 'Préc',
                 nextText: 'Suiv',
@@ -478,8 +527,8 @@
                 firstDay: 1,
                 beforeShowDay: function(date) {
                     var datestring = formatDateYYYYMMDD(date);
-                    for (var i = 0; i < dayLocked18797.length; i++) {
-                        if (dayLocked18797[i] == datestring) {
+                    for (var i = 0; i < dateGrange.length; i++) {
+                        if (dateGrange[i] === datestring) {
                             return [true, 'highlight'];
                         }
                     }
@@ -503,8 +552,8 @@
                 firstDay: 1,
                 beforeShowDay: function(date) {
                     var datestring = formatDateYYYYMMDD(date);
-                    for (var i = 0; i < joursForge.length; i++) {
-                        if (joursForge[i] == datestring) {
+                    for (var i = 0; i < dateAlcove.length; i++) {
+                        if (dateAlcove[i] === datestring) {
                             return [true, 'highlight'];
                         }
                     }
@@ -521,9 +570,5 @@
 <script src="js/resume.js"></script>
 <script src="menu.js"></script>
 <script src="gallery.js"></script>
-
-
-
-
-
-</body></html>
+</body>
+</html>
