@@ -147,7 +147,22 @@ img {
   margin-bottom: 45px !important;
   background : rgba(181, 97, 115, 0.7);
   font-family: Didot;
-  font-size: 30px;
+  font-size: 35px;
+  padding: 5px 10px 5px 10px;
+  border: solid 2px white transparent;
+  border-radius: 5px;
+  color: rgba(215, 216, 184, 0.6);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  display: inline-block;
+}
+
+.titre_room {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+  margin-left: 15px !important;
+  background : rgba(181, 97, 115, 0.7);
+  font-family: Didot;
+  font-size: 35px;
   padding: 5px 10px 5px 10px;
   border: solid 2px white transparent;
   border-radius: 5px;
@@ -235,7 +250,7 @@ img {
 
 form {
   margin: 0 auto;
-  width: 500px;
+  width: 450px;
   border: 1px solid #CCC;
   border-radius: 1em;
 }
@@ -251,7 +266,6 @@ label {
 }
 
 input {
-  margin-top: 15px;
   margin-bottom: 15px;
 }
 input, textarea {

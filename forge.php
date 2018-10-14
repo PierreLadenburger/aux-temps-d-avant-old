@@ -1,15 +1,11 @@
 <?php
+    session_start();
     require_once 'common.php';
-
-if (isset($_POST['id']))
-{
-    $bdd = new PDO('mysql:host=localhost;dbname=aux-temps-d-avant;charset=utf8', 'adminCura', 'adminCura');
-    $del = $bdd->prepare("DELETE FROM reservations WHERE id = :id");
-    $del->execute(array(
-        "id" => $_POST['id'],
-    ));
-
-}
+    if ($_SESSION['admin'] != '1') {
+        echo 'ok';
+        header('location: index.php');
+        exit();
+    }
 ?>
 <html lang="en"><head>
 
@@ -39,20 +35,9 @@ if (isset($_POST['id']))
 
     <!-- Custom scripts for this template -->
 
-    <style>
-        #map {
-            height: 250px;
-            width: 250px;
-        }
-        #mapservices {
-            width: 570px;
-            height: 360px;
-        }
-    </style>
-
 </head>
 
-<body style="background-color: #d7c9b8; font-family: Didot; font-size: 20px;" class="background-style">
+<body id="body" style="background-color: #d7c9b8; font-family: Didot; font-size: 20px;">
 <nav class="navbar navbar-default navbar-fixed-top menu">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -73,30 +58,38 @@ if (isset($_POST['id']))
     </div><!-- /.container-fluid -->
 </nav>
     <div class="container" style="font-family: Didot;">
-            <div class="row" style="padding-top: 8rem !important">
-                <div class="col-sm-2 col-md-2 col-lg-2">
+        <div class="row" style="padding-top: 8rem !important">
+                <div class="col-sm-3 col-md-3 col-lg-2">
                     <?php printSideMenu() ?>
                 </div>
-                <div class="col-sm-10 col-md-10 col-lg-10">
+                <h2 class="titre_room">La Forge</h2>
+                <div class="col-sm-9 col-md-9 col-lg-10">
                     <div class="row">
-                        <div class="col-sm-4 col-md-4 col-lg-4">
+                        <div class="col-sm-12 col-md-12 col-lg-4">
                             <h2 style="font-family: Didot;"><i class="fa fa-calendar"></i> Planning</h2>
                             <div style="margin-top: 10px; font-size: 15px; " id="datepickerForge">
                                 <?php
-                                    $bdd = new PDO('mysql:host=localhost;dbname=aux-temps-d-avant;charset=utf8', 'adminCura', 'adminCura');
 
-                                    $rep = $bdd->query('SELECT * FROM reservations WHERE chambre=\'forge\'');
-                                    $dateForge = array();
-                                    foreach ($rep as $repBis)
-                                    {
-                                        $dateForge[] = $repBis['date'];
+                                    try {
+                                        $bdd = new PDO('mysql:host=localhost;dbname=aux-temps-d-avant;charset=utf8', 'adminCura', 'adminCura');
+
+                                        $rep = $bdd->query('SELECT * FROM reservations WHERE chambre=\'FORGE\'');
+                                        $dateForge = array();
+                                        foreach ($rep as $repBis)
+                                        {
+                                            $dateForge[] = $repBis['date'];
+                                        }
                                     }
+                                    catch (PDOException $exception)
+                                    {
+                                        echo $exception->getMessage();
+                                    }
+
                                 ?>
                             </div>
                         </div>
-                        <div class="col-sm-8 col-md-8 col-lg-8">
+                        <div class="col-sm-12 col-md-12 col-lg-8">
                             <h2 style="font-family: Didot;"><i class="fa fa-address-book"></i> Ajouter Réservation</h2>
-                            <div class="account-wall" style="margin-top: 30px;">
                                 <form class="form-signin" style="margin: 0">
                                     <div class="form-group">
                                         <input id="prenom" name="prenom" type="text" class="form-control" placeholder="Nom">
@@ -108,11 +101,10 @@ if (isset($_POST['id']))
                                         <input id="date" name="date" type="date" class="form-control">
                                     </div>
                                     <div class="btn btn-lg btn-primary btn-block" id="add"
-                                            style="background : rgba(181, 97, 115, 0.7); border: solid 2px rgba(181, 97, 115, 0.7);">
-                                        Ajouter
+                                            style="background : rgba(181, 97, 115, 0.7); border: solid 2px rgba(181, 97, 115, 0.7); color: #d7c9b8;">
+                                        <i class="fa fa-plus-circle"></i> Ajouter
                                     </div>
                                 </form>
-                            </div>
                         </div>
                     </div>
                     <h2 style="font-family: Didot;"><i class="fa fa-list"></i> Liste</h2>
@@ -120,7 +112,6 @@ if (isset($_POST['id']))
                     echo '<table style="color: rgb(53, 57, 66); width: 100%;">
                           <thead>
                             <tr>
-                                  <th class="in_table" scope="col">#</th>
                                   <th class="in_table" scope="col">Nom</th>
                                   <th class="in_table" scope="col">Prénom</th>
                                   <th class="in_table" scope="col">Date</th>
@@ -128,19 +119,25 @@ if (isset($_POST['id']))
                             </tr>
                           </thead>
                           <tbody>';
-                    $bdd = new PDO('mysql:host=localhost;dbname=aux-temps-d-avant;charset=utf8', 'adminCura', 'adminCura');
+                    try  {
+                        $bdd = new PDO('mysql:host=localhost;dbname=aux-temps-d-avant;charset=utf8', 'adminCura', 'adminCura');
 
-                    $rep = $bdd->query('SELECT * FROM reservations WHERE chambre=\'forge\'');
-                    foreach ($rep as $repBis)
-                    {
-                        echo '<tr>';
-                        echo '<td class="in_table" scope="col">' . $repBis['id'] . '</td>';
-                        echo '<td class="in_table">' . $repBis['nom'] . '</td>';
-                        echo '<td class="in_table">' . $repBis['prenom'] . '</td>';
-                        echo '<td class="in_table">' . $repBis['date'] . '</td>';
-                        echo '<td class="in_table"><i onclick=" $( \'#delete\' ).submit();" class="fa fa-trash"></i><form style="width: auto !important;" onsubmit="return confirm(\'dmd\');" method="post" id="delete"><input name="id" type="hidden" value="'. $repBis['id'] .'"></form></td>';
-                        echo '</tr>';
+                        $rep = $bdd->query('SELECT * FROM reservations WHERE chambre=\'forge\'');
+                        foreach ($rep as $repBis)
+                        {
+                            echo '<tr>';
+                            echo '<td class="in_table">' . $repBis['nom'] . '</td>';
+                            echo '<td class="in_table">' . $repBis['prenom'] . '</td>';
+                            echo '<td class="in_table">' . date('d-m-Y', strtotime($repBis['date'])) . '</td>';
+                            echo '<td class="in_table"><button id="del" value="'. $repBis['id'] .'" type="button" class="btn btn-danger"><i class="fa fa-trash"></i> Supprimer</button></td>';
+                            echo '</tr>';
+                        }
                     }
+                    catch (PDOException $exception)
+                    {
+                        $exception->getMessage();
+                    }
+
                     echo'                         
                           </tbody>
                     </table>'
@@ -153,12 +150,22 @@ if (isset($_POST['id']))
 <script src="vendor/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <script>
+    $(document).on('click', '#del', function() {
+        var conf = confirm("Etes-vous sur de vouloir supprimer cet utilisateur ?");
+        if (conf === true) {
+            var dataString = "id=" + $(this).val() + "&type=delete";
+            $.ajax({
+                type: "POST",
+                url: "editReservation.php",
+                data: dataString,
+                success: function(resultData){
+                    location.reload();
+                }
+            });
+        }
+    });
 
-    function deleteUser()
-    {
-        $( "#delete" ).submit();
-    }
-    $( "#add" ).click(function() {
+    $(document).on('click', '#add', function() {
         var prenom = $('#prenom').val();
         var nom = $('#nom').val();
         var date = $('#date').val();
@@ -166,13 +173,16 @@ if (isset($_POST['id']))
         console.log(prenom, nom, date);
         if (prenom !== '' && nom !== '' && date !== '')
         {
-            var dataString = 'chambre=forge&prenom=' + prenom + '&nom=' + nom + "&date=" + date + "&type=add";
+            var dataString = 'chambre=FORGE&prenom=' + prenom + '&nom=' + nom + "&date=" + date + "&type=add";
             $.ajax({
-                type: "GET",
+                type: "POST",
                 url: "editReservation.php",
                 data: dataString,
                 success: function(resultData){
-                    window.location.href = "forge.php";
+                    $('#prenom').val("");
+                    $('#nom').val("");
+                    $('#date').val("");
+                    location.reload();
                 }
             });
         }

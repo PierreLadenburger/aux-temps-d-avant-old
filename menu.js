@@ -1,11 +1,9 @@
 var slideIndexAlcove = 0;
 var slideIndexGrange = 0;
 var slideIndexForge = 0;
-var slideIndexMaison = 0;
 showSlidesAlcoves();
 showSlidesGranges();
 showSlidesForges();
-showSlidesMaison();
 
 function showSlidesAlcoves() {
     var i;
@@ -19,20 +17,6 @@ function showSlidesAlcoves() {
     slides[slideIndexAlcove - 1].style.display = "block";
     setTimeout(showSlidesAlcoves, 4000); // Change image every 4 seconds
 }
-
-function showSlidesMaison() {
-    var i;
-    var slides = document.getElementsByClassName("mySlidesMaison");
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-    }
-    slideIndexMaison++;
-    if (slideIndexMaison > slides.length) {
-        slideIndexMaison = 1}
-    slides[slideIndexMaison - 1].style.display = "block";
-    setTimeout(showSlidesMaison, 2000); // Change image every 4 seconds
-}
-
 
 function showSlidesGranges() {
     var i;

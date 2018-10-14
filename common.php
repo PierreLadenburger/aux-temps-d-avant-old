@@ -15,6 +15,8 @@ function printSideMenu()
                 <li style="border-bottom: 1px solid  #d7c9b8; float: none; "><a class="nav-link " href="forge.php" style="color: #d7c9b8;" ><i class="fa fa-bed"></i> La Forge</a></li>
                 <li style="border-bottom: 1px solid  #d7c9b8; float: none;"><a class=" " href="grange.php" style="color: #d7c9b8;"><i class="fa fa-bed"></i> La Grange</a></li>
                 <li style="border-bottom: 1px solid  #d7c9b8; float: none;"><a class="" href="alcove.php" style="color: #d7c9b8;"><i class="fa fa-bed"></i> L'Alcôve</a></li>
+                <!-- <li style="border-bottom: 1px solid  #d7c9b8; float: none;"><a class="" href="services.php" style="color: #d7c9b8;"><i class="fa fa-map-marker"></i> Services</a></li> -->
+                <li style="border-bottom: 1px solid  #d7c9b8; float: none;"><a class="" href="historique.php" style="color: #d7c9b8;"><i class="fa fa-history"></i> Historique</a></li>
             </ul>
         </div>
     </nav>

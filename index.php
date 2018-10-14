@@ -1,3 +1,6 @@
+<?php
+
+?>
 <html lang="en"><head>
 
     <meta charset="utf-8">
@@ -27,10 +30,6 @@
     <!-- Custom scripts for this template -->
 
     <style>
-        #map {
-            height: 250px;
-            width: 250px;
-        }
         #mapservices {
             width: 570px;
             height: 360px;
@@ -39,9 +38,9 @@
 
 </head>
 
-<body style="background-color: #d7c9b8; font-family: Didot; font-size: 20px;" class="background-style">
+<body id="body" style="background-color: #d7c9b8; font-family: Didot; font-size: 20px;">
 <nav class="navbar navbar-default navbar-fixed-top menu">
-    <div class="container">
+    <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -59,7 +58,7 @@
                 <li><a class="nav-link js-scroll-trigger" href="#forge" style="color: #d7c9b8;"><i class="fa fa-bed"></i> La Forge</a></li>
                 <li><a class="nav-link js-scroll-trigger" href="#grange" style="color: #d7c9b8;"><i class="fa fa-bed"></i> La Grange</a></li>
                 <li><a class="nav-link js-scroll-trigger" href="#alcove" style="color: #d7c9b8;"><i class="fa fa-bed"></i> L'Alcôve</a></li>
-                <li><a class="nav-link js-scroll-trigger" href="#proximite" style="color: #d7c9b8;"><i class="fa fa-map-marker"></i> Alentours</a></li>
+                <!-- <li><a class="nav-link js-scroll-trigger" href="#proximite" style="color: #d7c9b8;"><i class="fa fa-map-marker"></i> Services</a></li> -->
                 <li><a class="nav-link js-scroll-trigger" href="#contact" style="color: #d7c9b8;"><i class="fa fa-phone"></i> Contact</a></li>
                 <li><a class="nav-link" href="login.php"><i class="fa fa-lock"></i></a> </li>
 
@@ -89,7 +88,7 @@
                 <!-- Full-width images with number text -->
                 <div class="slideshow-container">
                     <div class="mySlidesGallery">
-                        <img src="img/maison1.jpg" alt="maison" style="width:100%">
+                        <img src="img/maison1.jpg" alt="maison" style="width:100%;">
                     </div>
 
                     <div class="mySlidesGallery">
@@ -112,11 +111,6 @@
                     <!-- Next and previous buttons -->
                     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                     <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-                    <!-- Image text -->
-                    <div class="caption-container">
-                        <p id="caption"></p>
-                    </div>
                 </div>
             </div>
         </div>
@@ -169,16 +163,29 @@
                                 Forge</strong></div>
                         <div style="margin-top: 10px; font-size: 15px; " id="datepickerForge">
                             <?php
-                                $bdd = new PDO('mysql:host=localhost;dbname=aux-temps-d-avant;charset=utf8', 'adminCura', 'adminCura');
-
-                                $rep = $bdd->query('SELECT * FROM reservations WHERE chambre=\'forge\'');
-                                $dateForge = array();
-                                foreach ($rep as $repBis)
+                                try
                                 {
-                                    $dateForge[] = $repBis['date'];
+                                    $bdd = new PDO('mysql:host=localhost;dbname=aux-temps-d-avant;charset=utf8', 'adminCura', 'adminCura');
+
+                                    $rep = $bdd->query('SELECT * FROM reservations WHERE chambre=\'FORGE\'');
+                                    $dateForge = array();
+                                    foreach ($rep as $repBis)
+                                    {
+                                        $dateForge[] = $repBis['date'];
+                                    }
+                                }
+                                catch (PDOException $exception)
+                                {
+                                    echo $exception->getMessage();
                                 }
                             ?>
                         </div>
+                        <table style="margin-top: 10px;">
+                            <tr>
+                                <td style="border: solid 2px rgba(181, 97, 115, 0.7); width: 25px; height: 25px; background-color: rgba(181, 97, 115, 0.7);"></td>
+                                <td style="color : rgb(53, 57, 66); padding-left: 10px;"><strong>Non disponible</strong></td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
                 <div style="color : rgb(53, 57, 66); margin-top: 35px;"><strong>Tarifs</strong> (petit-déjeuner compris)
@@ -273,16 +280,29 @@
                                 Grange</strong></div>
                         <div style="margin-top: 10px; font-size: 15px;" id="datepickerGrange">
                             <?php
+                            try
+                            {
                                 $bdd = new PDO('mysql:host=localhost;dbname=aux-temps-d-avant;charset=utf8', 'adminCura', 'adminCura');
 
-                                $rep = $bdd->query('SELECT * FROM reservations WHERE chambre=\'grange\'');
+                                $rep = $bdd->query('SELECT * FROM reservations WHERE chambre=\'GRANGE\'');
                                 $dateGrange = array();
                                 foreach ($rep as $repBis)
                                 {
                                     $dateGrange[] = $repBis['date'];
                                 }
+                            }
+                            catch (PDOException $exception)
+                            {
+                                echo $exception->getMessage();
+                            }
                             ?>
                         </div>
+                        <table style="margin-top: 10px;">
+                            <tr>
+                                <td style="border: solid 2px rgba(181, 97, 115, 0.7); width: 25px; height: 25px; background-color: rgba(181, 97, 115, 0.7);"></td>
+                                <td style="color : rgb(53, 57, 66); padding-left: 10px;"><strong>Non disponible</strong></td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
                 <div style="color : rgb(53, 57, 66); margin-top: 35px;"><strong>Tarifs</strong> (petit-déjeuner compris)
@@ -350,16 +370,29 @@
                                 L'Alcôve</strong></div>
                         <div style="margin-top: 10px; font-size: 15px;" id="datepickerAlcove">
                             <?php
-                                $bdd = new PDO('mysql:host=localhost;dbname=aux-temps-d-avant;charset=utf8', 'adminCura', 'adminCura');
-
-                                $rep = $bdd->query('SELECT * FROM reservations WHERE chambre=\'alcove\'');
-                                $dateAlcove = array();
-                                foreach ($rep as $repBis)
+                                try
                                 {
-                                    $dateAlcove[] = $repBis['date'];
+                                    $bdd = new PDO('mysql:host=localhost;dbname=aux-temps-d-avant;charset=utf8', 'adminCura', 'adminCura');
+
+                                    $rep = $bdd->query('SELECT * FROM reservations WHERE chambre=\'ALCOVE\'');
+                                    $dateAlcove = array();
+                                    foreach ($rep as $repBis)
+                                    {
+                                        $dateAlcove[] = $repBis['date'];
+                                    }
+                                }
+                                catch (PDOException $exception)
+                                {
+                                    echo $exception->getMessage();
                                 }
                             ?>
                         </div>
+                        <table style="margin-top: 10px;">
+                            <tr>
+                                <td style="border: solid 2px rgba(181, 97, 115, 0.7); width: 25px; height: 25px; background-color: rgba(181, 97, 115, 0.7);"></td>
+                                <td style="color : rgb(53, 57, 66); padding-left: 10px;"><strong>Non disponible</strong></td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
                 <div style="color : rgb(53, 57, 66); margin-top: 35px;"><strong>Tarifs</strong> (petit-déjeuner compris)
@@ -395,52 +428,59 @@
             </div>
         </div>
     </section>
-    <section class="resume-section" id="proximite">
-        <h2 class="titre_all">Alentours</h2>
+ <!--   <section class="resume-section" id="proximite">
+        <h2 class="titre_all">Services</h2>
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div id="mapservices"></div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6">
-                <select id="services">
+                <select class="form-control" id="services">
                     <option>Restaurants</option>
                     <option>Bars</option>
                 </select>
             </div>
         </div>
-    </section>
+    </section>-->
     <section class="resume-section" id="contact">
         <h2 class="titre_all">Contact</h2>
 
-                <div style="color : rgb(53, 57, 66);"><strong>Propriétaire</strong></div>
-                <div style="color : rgb(53, 57, 66);"><i class="fa fa-user"></i> Christian et Carine Cura</div>
-                <div style="color : rgb(53, 57, 66);"><i class="fa fa-phone"></i> 03 88 72 88 60 | 06 76 56 90 33</div>
-                <div style="color : rgb(53, 57, 66);"><i class="fa fa-flag"></i> Langue(s): Français, Allemand</div>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <div style="color : rgb(53, 57, 66);"><strong>Propriétaires</strong></div>
+                <div style="color : rgb(53, 57, 66);"><i class="fa fa-user"></i> Christian & Carine Cura</div>
+                <div style="color : rgb(53, 57, 66);"><i class="fa fa-phone"></i> +33 (0)3 88 72 88 60</div>
+                <div style="color : rgb(53, 57, 66);"><i class="fa fa-phone"></i> +33 (0)6 76 56 90 33</div>
+                <div style="color : rgb(53, 57, 66);"><i class="fa fa-flag"></i> Français & Allemand</div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 account-wall">
+                <!-- <div style="text-align: center; margin-top: 40px;">
+                    <div style="color: #353942; display: inline-block; font-size: 23px; font-weight: bold;">Contacter le propriétaire</div>
+                </div>-->
 
-                <div class="account-wall">
-                    <div style="text-align: center; margin-top: 40px;">
-                        <div style="color: #353942; display: inline-block; font-size: 23px; font-weight: bold;">Contacter le propriétaire</div>
+                <form class="form-signin" method="post">
+                    <input id="email" name="email" type="email" class="form-control" placeholder="E-mail" required>
+                    <input id="name" name="name" type="text" class="form-control" placeholder="Nom" required>
+                    <input id="firstname" name="firstame" type="text" class="form-control" placeholder="Prénom" required>
+                    <textarea id="message" name="text" class="form-control" placeholder="Laissez votre message içi"
+                              required></textarea>
+                    <div id="sendEmail" class="btn btn-lg btn-primary btn-block" style="background : rgba(181, 97, 115, 0.7); border: solid 2px rgba(181, 97, 115, 0.7); color: #d7c9b8;">
+                        <i class="fa fa-envelope"></i> Envoyez
                     </div>
+                </form>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+              <a href="https://www.facebook.com/auxtempsdavant/"><i class="fa fa-facebook-official fa-2x" style="color:#3B5998;"></i></a>
+            </div>
 
-                    <form class="form-signin" method="post">
-                        <input name="e-mail" type="text" class="form-control" placeholder="E-mail" required autofocus>
-                        <input name="name" type="text" class="form-control" placeholder="Nom" required>
-                        <input name="firstame" type="password" class="form-control" placeholder="Prénom" required>
-                        <textarea name="text" class="form-control" placeholder="Laissez votre message içi"
-                                  required></textarea>
-                        <button class="btn btn-lg btn-primary btn-block" type="submit"
-                                style="background : rgba(181, 97, 115, 0.7); border: solid 2px rgba(181, 97, 115, 0.7);">
-                            Envoyez
-                        </button>
-                    </form>
-                </div>
+
+        </div>
     </section>
 </div>
 
-
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZwFBQDXkJtIr5ZGpmXKQpHcbd025gyWU&"></script>
 <script>
-        var pos = {lat: 48.903975, lng: 7.661313};
+/*        var pos = {lat: 48.903975, lng: 7.661313};
         var map = new google.maps.Map(document.getElementById('mapservices'), {
             zoom: 8,
             center: pos
@@ -451,7 +491,7 @@
             map: map,
             name: "Aux temps d'avant",
             title: "Aux temps d'avant",
-        });
+        });*/
 </script>
 <!-- Bootstrap core JavaScript -->
 
@@ -459,14 +499,37 @@
 <script src="vendor/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <!-- <script src="vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script> -->
-<script>
-    $("#services").change(function(){
-    });
-</script>
+
 
 
 <!-- Plugin JavaScript -->
 <script type="text/javascript">
+
+    $(document).on('click', '#sendEmail', function() {
+        var email =  $('#email').val();
+        var name = $('#name').val();
+        var firstname = $('#firstname').val();
+        var message = $('#message').val();
+        if (email !== "" && name !== "" && firstname !== "" && message !== "") {
+            var dataString = 'email=' + email + '&name=' + name + "&firstname=" + firstname + "&message=" + message;
+            $.ajax({
+                type: "POST",
+                url: "sendEmail.php",
+                data: dataString,
+                success: function(resultData){
+                    $('#email').val("");
+                    $('#name').val("");
+                    $('#firstname').val("");
+                    $('#message').val("");
+                    alert("Message envoyé");
+                }
+            });
+        }
+        else {
+            alert("Veuillez remplir tous les champs");
+        }
+    });
+
     var dateForge = <?php echo json_encode($dateForge); ?>;
     var dateGrange = <?php echo json_encode($dateGrange); ?>;
     var dateAlcove = <?php echo json_encode($dateAlcove); ?>;
@@ -570,5 +633,6 @@
 <script src="js/resume.js"></script>
 <script src="menu.js"></script>
 <script src="gallery.js"></script>
+</div>
 </body>
 </html>

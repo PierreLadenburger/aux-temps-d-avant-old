@@ -1,5 +1,11 @@
 <?php
     require_once "common.php";
+        session_start();
+    if ($_SESSION['admin'] != '1') {
+        echo 'ok';
+        header('location: index.php');
+        exit();
+    }
 ?>
 <html lang="en"><head>
 
@@ -28,21 +34,9 @@
     <!-- Plugin JavaScript -->
 
     <!-- Custom scripts for this template -->
-
-    <style>
-        #map {
-            height: 250px;
-            width: 250px;
-        }
-        #mapservices {
-            width: 570px;
-            height: 360px;
-        }
-    </style>
-
 </head>
 
-<body style="background-color: #d7c9b8; font-family: Didot; font-size: 20px;" class="background-style">
+<body id="body" style="background-color: #d7c9b8; font-family: Didot; font-size: 20px;">
 <nav class="navbar navbar-default navbar-fixed-top menu">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -62,63 +56,137 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
-    <div class="container" style="font-family: Didot;">
-        <div class="row" style="padding-top: 8rem !important">
-            <div class="col-sm-2 col-md-2 col-lg-2">
-                <?php printSideMenu() ?>
-            </div>
-            <div class="col-sm-10 col-md-10 col-lg-10">
-                <div class="row">
-                    <div class="col-sm-4 col-md-4 col-lg-4">
-                        <h2 style="font-family: Didot; margin-top: 0px !important;">L'ALCôVE</h2>
-                        <div style="margin-top: 10px; font-size: 15px; " id="datepickerAlcove">
-                            <?php
-                                $bdd = new PDO('mysql:host=localhost;dbname=aux-temps-d-avant;charset=utf8', 'adminCura', 'adminCura');
+<div class="container" style="font-family: Didot;">
+    <div class="row" style="padding-top: 8rem !important">
+        <div class="col-sm-3 col-md-3 col-lg-2">
+            <?php printSideMenu() ?>
+        </div>
+        <h2 class="titre_room">L'Alcôve</h2>
+        <div class="col-sm-9 col-md-9 col-lg-10">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-4">
+                    <h2 style="font-family: Didot;"><i class="fa fa-calendar"></i> Planning</h2>
+                    <div style="margin-top: 10px; font-size: 15px; " id="datepickerAlcove">
+                        <?php
 
-                                $rep = $bdd->query('SELECT * FROM reservations WHERE chambre=\'alcove\'');
-                                $dateAlcove = array();
-                                foreach ($rep as $repBis)
-                                {
-                                    $dateAlcove[] = $repBis['date'];
-                                }
-                            ?>
-                        </div>
-                    </div>
-                    <div class="col-sm-8 col-md-8 col-lg-8">
-                        <div class="account-wall">
-                            <form class="form-signin">
-                                <div class="form-group">
-                                    <select class="form-control" id="type">
-                                        <option>ajouter</option>
-                                        <option>supprimer</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <input id="prenom" name="prenom" type="text" class="form-control" placeholder="Prénom">
-                                </div>
-                                <div class="form-group">
-                                    <input id="nom" name="nom" type="text" class="form-control" placeholder="Nom">
-                                </div>
-                                <div class="form-group">
-                                    <input id="date" name="date" type="date" class="form-control">
-                                </div>
-                                <button class="btn btn-lg btn-primary btn-block" type="submit"
-                                        style="background : rgba(181, 97, 115, 0.7); border: solid 2px rgba(181, 97, 115, 0.7);">
-                                    Envoyez
-                                </button>
-                            </form>
-                        </div>
+                        try {
+                            $bdd = new PDO('mysql:host=localhost;dbname=aux-temps-d-avant;charset=utf8', 'adminCura', 'adminCura');
+
+                            $rep = $bdd->query('SELECT * FROM reservations WHERE chambre=\'ALCOVE\'');
+                            $dateAlcove = array();
+                            foreach ($rep as $repBis)
+                            {
+                                $dateAlcove[] = $repBis['date'];
+                            }
+                        }
+                        catch (PDOException $exception)
+                        {
+                            echo $exception->getMessage();
+                        }
+
+                        ?>
                     </div>
                 </div>
-
+                <div class="col-sm-12 col-md-12 col-lg-8">
+                    <h2 style="font-family: Didot;"><i class="fa fa-address-book"></i> Ajouter Réservation</h2>
+                    <form class="form-signin" style="margin: 0">
+                        <div class="form-group">
+                            <input id="prenom" name="prenom" type="text" class="form-control" placeholder="Nom">
+                        </div>
+                        <div class="form-group">
+                            <input id="nom" name="nom" type="text" class="form-control" placeholder="Prénom">
+                        </div>
+                        <div class="form-group">
+                            <input id="date" name="date" type="date" class="form-control">
+                        </div>
+                        <div class="btn btn-lg btn-primary btn-block" id="add"
+                             style="background : rgba(181, 97, 115, 0.7); border: solid 2px rgba(181, 97, 115, 0.7); color: #d7c9b8;">
+                            <i class="fa fa-plus-circle"></i> Ajouter
+                        </div>
+                    </form>
+                </div>
             </div>
+            <h2 style="font-family: Didot;"><i class="fa fa-list"></i> Liste</h2>
+            <?php
+            echo '<table style="color: rgb(53, 57, 66); width: 100%;">
+                          <thead>
+                            <tr>
+                                  <th class="in_table" scope="col">Nom</th>
+                                  <th class="in_table" scope="col">Prénom</th>
+                                  <th class="in_table" scope="col">Date</th>
+                                  <th class="in_table" scope="col">Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>';
+            try  {
+                $bdd = new PDO('mysql:host=localhost;dbname=aux-temps-d-avant;charset=utf8', 'adminCura', 'adminCura');
+
+                $rep = $bdd->query('SELECT * FROM reservations WHERE chambre=\'ALCOVE\'');
+                foreach ($rep as $repBis)
+                {
+                    echo '<tr>';
+                    echo '<td class="in_table">' . $repBis['nom'] . '</td>';
+                    echo '<td class="in_table">' . $repBis['prenom'] . '</td>';
+                    echo '<td class="in_table">' . date('d-m-Y', strtotime($repBis['date'])) . '</td>';
+                    echo '<td class="in_table"><button id="del" value="'. $repBis['id'] .'" type="button" class="btn btn-danger"><i class="fa fa-trash"></i> Supprimer</button></td>';
+                    echo '</tr>';
+                }
+            }
+            catch (PDOException $exception)
+            {
+                $exception->getMessage();
+            }
+
+            echo'                         
+                          </tbody>
+                    </table>'
+            ?>
         </div>
     </div>
+</div>
 
 
 <script src="vendor/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <script>
+    $(document).on('click', '#del', function() {
+        var conf = confirm("Etes-vous sur de vouloir supprimer cet utilisateur ?");
+        if (conf === true) {
+            var dataString = "id=" + $(this).val() + "&type=delete";
+            $.ajax({
+                type: "POST",
+                url: "editReservation.php",
+                data: dataString,
+                success: function(resultData){
+                    location.reload();
+                }
+            });
+        }
+    });
+
+    $(document).on('click', '#add', function() {
+        var prenom = $('#prenom').val();
+        var nom = $('#nom').val();
+        var date = $('#date').val();
+
+        console.log(prenom, nom, date);
+        if (prenom !== '' && nom !== '' && date !== '')
+        {
+            var dataString = 'chambre=ALCOVE&prenom=' + prenom + '&nom=' + nom + "&date=" + date + "&type=add";
+            $.ajax({
+                type: "POST",
+                url: "editReservation.php",
+                data: dataString,
+                success: function(resultData){
+                    $('#prenom').val("");
+                    $('#nom').val("");
+                    $('#date').val("");
+                    location.reload();
+                }
+            });
+        }
+    });
+
     var dateAlcove = <?php echo json_encode($dateAlcove); ?>;
 
     function formatDateYYYYMMDD(date) {

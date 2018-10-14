@@ -1,10 +1,14 @@
 <?php
+session_start();
+ob_start();
 $user = "admin";
 $password = "admin";
+
 
 if (isset($_POST['user']) && isset($_POST['password'])
     && strcmp($user, $_POST['user']) == 0 && strcmp($password, $_POST['password']) == 0)
 {
+    $_SESSION['admin'] = '1';
     header('location: forge.php');
     exit();
 }
@@ -39,7 +43,7 @@ if (isset($_POST['user']) && isset($_POST['password'])
     <!-- Custom scripts for this template -->
 
 </head>
-<body style="font-family: Didot; font-size: 20px; background-color: #d7c9b8;" class="background-style">
+<body style="font-family: Didot; font-size: 20px; background-color: #d7c9b8;">
 <nav class="navbar navbar-default navbar-fixed-top menu">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -59,7 +63,7 @@ if (isset($_POST['user']) && isset($_POST['password'])
                 <li><a class="nav-link js-scroll-trigger" href="#forge" style="color: #d7c9b8;"><i class="fa fa-bed"></i> La Forge</a></li>
                 <li><a class="nav-link js-scroll-trigger" href="#grange" style="color: #d7c9b8;"><i class="fa fa-bed"></i> La Grange</a></li>
                 <li><a class="nav-link js-scroll-trigger" href="#alcove" style="color: #d7c9b8;"><i class="fa fa-bed"></i> L'Alcôve</a></li>
-                <li><a class="nav-link js-scroll-trigger" href="#proximite" style="color: #d7c9b8;"><i class="fa fa-map-marker"></i> Alentours</a></li>
+                <!-- <li><a class="nav-link js-scroll-trigger" href="#proximite" style="color: #d7c9b8;"><i class="fa fa-map-marker"></i> Alentours</a></li> -->
                 <li><a class="nav-link js-scroll-trigger" href="#contact" style="color: #d7c9b8;"><i class="fa fa-phone"></i> Contact</a></li>
                 <li><a class="nav-link" href="login.php"><i class="fa fa-lock"></i></a> </li>
 
@@ -73,7 +77,7 @@ if (isset($_POST['user']) && isset($_POST['password'])
             <form class="form-signin" method="post">
                 <input name="user" type="text" class="form-control" placeholder="Nom d'utilisateur" required autofocus>
                 <input name="password" type="password" class="form-control" placeholder="Mot de passe" required>
-                <button class="btn btn-lg btn-primary btn-block" type="submit" style="background : rgba(181, 97, 115, 0.7); border: solid 2px rgba(181, 97, 115, 0.7);">Se connecter</button>
+                <button class="btn btn-lg btn-primary btn-block" type="submit" style="background : rgba(181, 97, 115, 0.7); border: solid 2px rgba(181, 97, 115, 0.7); color: #d7c9b8;">Se connecter</button>
             </form>
         </div>
 </div>
