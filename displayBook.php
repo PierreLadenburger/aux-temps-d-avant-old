@@ -1,19 +1,3 @@
-<?php
-session_start();
-ob_start();
-$user = "carine";
-$password = "bulle2267";
-
-
-if (isset($_POST['user']) && isset($_POST['password'])
-    && strcmp($user, $_POST['user']) == 0 && strcmp($password, $_POST['password']) == 0)
-{
-    $_SESSION['admin'] = '1';
-    header('location: forge.php');
-    exit();
-}
-?>
-
 <html lang="en"><head>
 
     <meta charset="utf-8">
@@ -42,8 +26,10 @@ if (isset($_POST['user']) && isset($_POST['password'])
 
     <!-- Custom scripts for this template -->
 
+
 </head>
-<body style="font-family: Didot; font-size: 20px; background-color: #d7c9b8;">
+
+<body id="body" style="background-color: #d7c9b8; font-family: Didot; font-size: 20px;">
 <nav class="navbar navbar-default navbar-fixed-top menu">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -59,31 +45,59 @@ if (isset($_POST['user']) && isset($_POST['password'])
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-            <!--    <li><a class="nav-link js-scroll-trigger" href="#video" style="color: #d7c9b8;"><i class="fa fa-video-camera"></i> Vidéo</a></li>
+                <!-- <li><a class="nav-link js-scroll-trigger" href="#video" style="color: #d7c9b8;"><i class="fa fa-video-camera"></i> Vidéo</a></li>
                 <li><a class="nav-link js-scroll-trigger" href="#forge" style="color: #d7c9b8;"><i class="fa fa-bed"></i> La Forge</a></li>
                 <li><a class="nav-link js-scroll-trigger" href="#grange" style="color: #d7c9b8;"><i class="fa fa-bed"></i> La Grange</a></li>
                 <li><a class="nav-link js-scroll-trigger" href="#alcove" style="color: #d7c9b8;"><i class="fa fa-bed"></i> L'Alcôve</a></li>
-                <li><a class="nav-link js-scroll-trigger" href="#proximite" style="color: #d7c9b8;"><i class="fa fa-map-marker"></i> Alentours</a></li>
+                <li><a class="nav-link js-scroll-trigger" href="displayBook.php" style="color: #d7c9b8;"><i class="fa fa-book"></i> Livre d'or</a></li>
+                <li><a class="nav-link js-scroll-trigger" href="#proximite" style="color: #d7c9b8;"><i class="fa fa-map-marker"></i> Services</a></li>
                 <li><a class="nav-link js-scroll-trigger" href="#contact" style="color: #d7c9b8;"><i class="fa fa-phone"></i> Contact</a></li>
                 <li><a class="nav-link" href="login.php"><i class="fa fa-lock"></i></a> </li> -->
-
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
+
 <div class="container" style="font-family: Didot;">
-        <h2 style="padding-top: 5rem !important;" class="text-center login-title">Connexion</h2>
-        <div class="account-wall">
-            <form class="form-signin" method="post">
-                <input name="user" type="text" class="form-control" placeholder="Nom d'utilisateur" required autofocus>
-                <input name="password" type="password" class="form-control" placeholder="Mot de passe" required>
-                <button class="btn btn-lg btn-primary btn-block" type="submit" style="background : rgba(211, 211, 211, 0.8); border: solid 2px #353942; color: #353942;">Se connecter</button>
-            </form>
+    <h2 class="titre_all" style="margin-top: 8rem !important">Livre d'or</h2>
+    <div class="messages-container">
+        <div class="row">
+            <div class="col-lg-4 col-md-5 col-sm-5">
+                <img src="img/livre.jpg" width="350">
+            </div>
+
+            <div class="col-lg-8 col-md-7 col-sm-7">
+                <?php
+                try {
+                    $bdd = new PDO('mysql:host=localhost;dbname=aux-temps-d-avant;charset=utf8', 'adminCura', 'adminCura');
+
+                    $rep = $bdd->query('SELECT * FROM livre');
+                    foreach ($rep as $repBis)
+                    {
+                        echo "<div class='message' style='text-align: center;'>
+                                   <div>
+                                       " . $repBis['message'] .
+                                   "</div>
+                                    <br>
+                                    <div>".  date('d-m-Y', strtotime($repBis['date'])) .
+                                   "</div>
+                                    <div>" . $repBis['nom'] .
+                                   "</div>
+                                    <a class=\"prev-message\" onclick=\"plusSlides(-1)\">&#10094;</a>
+                                    <a class=\"next-message\" onclick=\"plusSlides(1)\">&#10095;</a>
+                             </div>";
+                    }
+                }
+                catch (PDOException $exception)
+                {
+                    echo $exception->getMessage();
+                }
+                ?>
+            </div>
+            
         </div>
+    </div>
 </div>
-
-
-
-
+<script src="book.js"></script>
 </body>
 </html>

@@ -38,13 +38,13 @@ if (isset($_POST['name']) && isset($_POST['firstname']) && isset($_POST['email']
     $mail->SMTPAuth = true;
 
 //Username to use for SMTP authentication - use full email address for gmail
-    $mail->Username = "pladenburger67@gmail.com";
+    $mail->Username = "carinecura@gmail.com";
 
 //Password to use for SMTP authentication
-    $mail->Password = "pierre123";
+    $mail->Password = "bulle2267";
 
 //Set who the message is to be sent from
-    $mail->From = "pladenburger67@gmail.com";
+    $mail->From = "carinecura@gmail.com";
 
 //Set an alternative reply-to address
     //$mail->addReplyTo('replyto@example.com', 'First Last');
@@ -53,7 +53,7 @@ if (isset($_POST['name']) && isset($_POST['firstname']) && isset($_POST['email']
     $mail->isHTML(true);
 
 //Set who the message is to be sent to
-    $mail->addAddress('pierreladen@hotmail.fr');
+    $mail->addAddress('carinecura@gmail.com');
 
 //Set the subject line
     $mail->Subject = 'Message';

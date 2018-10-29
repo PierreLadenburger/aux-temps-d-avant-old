@@ -1,21 +1,21 @@
 var slideIndex = 0;
 showSlides(slideIndex);
 showSlidesRec();
-// Next/previous controls
+
 function plusSlides(n) {
     showSlides(slideIndex += n);
 }
 
 function showSlides(n) {
     var i;
-    var slides = document.getElementsByClassName("mySlidesGallery");
+    var slides = document.getElementsByClassName("message");
     if (n > slides.length)
     {
-	slideIndex = 1;
+        slideIndex = 1;
     }
     if (n < 1)
     {
-	slideIndex = slides.length;
+        slideIndex = slides.length;
     }
     for (i = 0; i < slides.length; i++)
     {
@@ -24,19 +24,15 @@ function showSlides(n) {
     slides[slideIndex-1].style.display = "block";
 }
 
-function showSlidesRec()
-{
-    //console.log("test");
+function showSlidesRec() {
     var i;
-    var slides = document.getElementsByClassName("mySlidesGallery");
-    for (i = 0; i < slides.length; i++)
-    {
-	slides[i].style.display = "none";
+    var slides = document.getElementsByClassName("message");
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
     }
     slideIndex++;
     if (slideIndex > slides.length) {
-	slideIndex = 1;
-    }
+        slideIndex = 1}
     slides[slideIndex - 1].style.display = "block";
-    setTimeout(showSlidesRec, 4000);
+    setTimeout(showSlidesRec, 8000); // Change image every 4 seconds
 }

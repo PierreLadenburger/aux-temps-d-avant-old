@@ -40,7 +40,7 @@
 
 <body style="background-color: #d7c9b8; font-family: Didot; font-size: 20px;">
 <nav class="navbar navbar-default navbar-fixed-top menu">
-    <div class="container">
+    <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -92,16 +92,19 @@
                         <h2 style="font-family: Didot;"><i class="fa fa-address-book"></i> Ajouter Réservation</h2>
                         <form class="form-signin" style="margin: 0">
                             <div class="form-group">
-                                <input id="prenom" name="prenom" type="text" class="form-control" placeholder="Nom">
+                                <input id="prenom" name="prenom" type="text" class="form-control" placeholder="Prénom">
                             </div>
                             <div class="form-group">
-                                <input id="nom" name="nom" type="text" class="form-control" placeholder="Prénom">
+                                <input id="nom" name="nom" type="text" class="form-control" placeholder="Nom">
+                            </div>
+
+                            <div class="form-group">
+                                <input id="dateStart" name="dateStart" type="date" class="form-control">
                             </div>
                             <div class="form-group">
-                                <input id="date" name="date" type="date" class="form-control">
+                                <input id="dateEnd" name="dateEnd" type="date" class="form-control">
                             </div>
-                            <div class="btn btn-lg btn-primary btn-block" id="add"
-                                 style="background : rgba(181, 97, 115, 0.7); border: solid 2px rgba(181, 97, 115, 0.7); color: #d7c9b8;">
+                            <div class="btn btn-lg btn-primary btn-block" id="add" style="background : rgba(211, 211, 211, 0.8); border: solid 2px #353942; color: #353942;">
                                 <i class="fa fa-plus-circle"></i> Ajouter
                             </div>
                         </form>
@@ -168,12 +171,12 @@
     $(document).on('click', '#add', function() {
         var prenom = $('#prenom').val();
         var nom = $('#nom').val();
-        var date = $('#date').val();
+        var dateStart = $('#dateStart').val();
+        var dateEnd = $('#dateEnd').val();
 
-        console.log(prenom, nom, date);
-        if (prenom !== '' && nom !== '' && date !== '')
-        {
-            var dataString = 'chambre=GRANGE&prenom=' + prenom + '&nom=' + nom + "&date=" + date + "&type=add";
+        if (prenom !== '' && nom !== '' && dateStart !== '' && dateEnd !== '')        {
+            var dataString = 'chambre=GRANGE&prenom=' + prenom + '&nom=' + nom + "&dateStart=" + dateStart + "&dateEnd=" + dateEnd + "&type=add";
+            console.log(dataString);
             $.ajax({
                 type: "POST",
                 url: "editReservation.php",
@@ -181,10 +184,13 @@
                 success: function(resultData){
                     $('#prenom').val("");
                     $('#nom').val("");
-                    $('#date').val("");
+                    $('#dateStart').val("");
+                    $('#dateEnd').val("");
                     location.reload();
                 }
             });
+        } else {
+            alert("Veuillez remplir tous les champs");
         }
     });
 

@@ -5,8 +5,8 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <title>Aux Temps d'Avants</title>
+    <meta name="description" content="Chambres d'hôtes Aux temps d'avant à Gundershoffen en Alsace proposant trois chambres: l'alcôve, la grange et la forge. Ancienne maison alsacienne entièrement rénovée.">
+    <title>Aux Temps d'Avant</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -17,6 +17,7 @@
     <link href="vendor/devicons/css/devicons.min.css" rel="stylesheet">
     <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/blitzer/jquery-ui.css" rel="stylesheet" type="text/css">
+
     <!--  <link href="vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"> -->
 
 
@@ -58,6 +59,7 @@
                 <li><a class="nav-link js-scroll-trigger" href="#forge" style="color: #d7c9b8;"><i class="fa fa-bed"></i> La Forge</a></li>
                 <li><a class="nav-link js-scroll-trigger" href="#grange" style="color: #d7c9b8;"><i class="fa fa-bed"></i> La Grange</a></li>
                 <li><a class="nav-link js-scroll-trigger" href="#alcove" style="color: #d7c9b8;"><i class="fa fa-bed"></i> L'Alcôve</a></li>
+                <li><a class="nav-link js-scroll-trigger" href="displayBook.php" style="color: #d7c9b8;"><i class="fa fa-book"></i> Livre d'or</a></li>
                 <!-- <li><a class="nav-link js-scroll-trigger" href="#proximite" style="color: #d7c9b8;"><i class="fa fa-map-marker"></i> Services</a></li> -->
                 <li><a class="nav-link js-scroll-trigger" href="#contact" style="color: #d7c9b8;"><i class="fa fa-phone"></i> Contact</a></li>
                 <li><a class="nav-link" href="login.php"><i class="fa fa-lock"></i></a> </li>
@@ -72,21 +74,29 @@
         <div class="row">
             <div class="col-lg-6 col-md-12 col-sm-12">
                 <h2>Aux Temps d'Avant</h2>
-                <p class="introduction">À 30 minutes de Strasbourg, le village est situé à l’entrée du Parc naturel
-                    régional des Vosges du Nord, à proximité des sites touristiques.
-                    Dans son écrin de verdure au milieu du village, cet ancien corps de ferme typiquement alsacien
-                    datant de 1771, à colombages, a été rénové dans le respect et la passion des vieilles pierres.
+                <p class="introduction">
+                    Dans son écrin de verdure au coeur du village nous avions acquis cet ancien corps de ferme typiquement alsacien
+                    datant de 1717 à l'état de ruines et l'avons rénové dans le respect des traditions et avec la passion des vieilles pierres.
+                    <br>
                     Ambiance cosy ou romantique mais de toute façon authentique, pour nos chambres indépendantes et
-                    spacieuses qui ont été aménagées à l’étage de l’ancienne forge et de l’ancienne grange.
+                    spacieuses qui ont été aménagées à l’étage de l’ancienne forge et de l’ancienne grange. Nous vous y proposons également un espace détente où nous avons le plaisir de vous offrir du thé et du café.
+                    <br>
+                    Meubles de famille ou objets chinés contribuent à l'atmosphère de sérénité, mêlant un soupçon de modernité avec un maximun de confort.
                     Une entrée propre à chaque chambre permet un accès en toute liberté.
-                    Le petit déjeuner est servi à partir de 9h dans l'ancienne étable rénovée en salle à manger ou sur
-                    la terrasse donnant sur le jardin en été. L'ancienne étable et sa cuisinette peuvent aussi être
-                    mises à disposition pour les soirées.</p>
+                    <br>
+                    Le petit déjeuner est servi à partir de 9h dans l'ancienne étable encore pourvue de sa mangeoire et transformée en salle à manger ou sur
+                    la terrasse donnant sur le jardin en été.
+                    <br>
+                    À 30 minutes de Strasbourg, le village est situé à l’entrée du Parc naturel
+                    régional des Vosges du Nord.
+                    <br>
+                    Parsemée de ruines de châteaux, terre d'Histoire, la région offre de nombreuses découvertes et activités. Parmis les sites les plus prisés, vous trouverez les villages aux maisons traditionnelles, les cités potières, verrières ou thermales ainsi que les vestiges militaires
+                </p>
             </div>
             <div class="col-lg-6 col-md-12 col-sm-12">
 
                 <!-- Full-width images with number text -->
-                <div class="slideshow-container">
+                <div class="slideshow-container" style="padding-top: 45px;">
                     <div class="mySlidesGallery">
                         <img src="img/maison1.jpg" alt="maison" style="width:100%;">
                     </div>
@@ -98,16 +108,15 @@
                     <div class="mySlidesGallery">
                         <img src="img/maison3.jpg" style="width:100%">
                     </div>
-
                     <div class="mySlidesGallery">
-                        <img src="img/maison4.jpg" style="width:100%">
+                        <img src="img/maison6.jpg" style="width:100%">
                     </div>
-
                     <div class="mySlidesGallery">
-                        <img src="img/maison5.jpg" style="width:100%">
+                        <img src="img/maison7.jpg" style="width:100%">
                     </div>
-
-
+                    <div class="mySlidesGallery">
+                        <img src="img/maison8.jpg" style="width:100%">
+                    </div>
                     <!-- Next and previous buttons -->
                     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                     <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -152,6 +161,12 @@
                         <div style="color : rgb(53, 57, 66);"><i style="color : rgb(53, 57, 66); margin-right: 9px;"
                                                                  class="fa fa-bed"></i> Lit double 90 x 200 cm
                         </div>
+                        <div style="color : rgb(53, 57, 66);"><i style="color : rgb(53, 57, 66); margin-right: 9px;"
+                                                                 class="fa fa-bed"></i> Lit simple 80 x 200 cm
+                        </div>
+                        <div style="color : rgb(53, 57, 66);"><img src="img/frigo.png" style="height: 20px; width: 20px; margin-right: 13px;"
+                            > Mini réfrigérateur
+                        </div>
                         <br>
                         <div style="color : rgb(53, 57, 66);"><strong>Egalement Disponible</strong></div>
                         <div style="color : rgb(53, 57, 66);"><i style="color : rgb(53, 57, 66); margin-right: 4px;"
@@ -182,7 +197,7 @@
                         </div>
                         <table style="margin-top: 10px;">
                             <tr>
-                                <td style="border: solid 2px rgba(181, 97, 115, 0.7); width: 25px; height: 25px; background-color: rgba(181, 97, 115, 0.7);"></td>
+                                <td class="not_available"></td>
                                 <td style="color : rgb(53, 57, 66); padding-left: 10px;"><strong>Non disponible</strong></td>
                             </tr>
                         </table>
@@ -274,6 +289,14 @@
                         <div style="color : rgb(53, 57, 66);"><i style="color : rgb(53, 57, 66); margin-right: 9px;"
                                                                  class="fa fa-bed"></i> Lit double 90 x 200 cm
                         </div>
+                        <div style="color : rgb(53, 57, 66);"><img src="img/frigo.png" style="height: 20px; width: 20px; margin-right: 13px;"
+                                              > Mini réfrigérateur
+                        </div>
+                        <br>
+                        <div style="color : rgb(53, 57, 66);"><strong>Egalement Disponible</strong></div>
+                        <div style="color : rgb(53, 57, 66);"><i style="color : rgb(53, 57, 66); margin-right: 4px;"
+                                                                 class="fa fa-bed"></i> Lit bébé
+                        </div>
                     </div>
                     <div class="col-md-6 col-md-6 col-sm-6" style="margin-top: 20px;">
                         <div style="color : rgb(53, 57, 66); text-align: left;"><strong>Disponibilités de La
@@ -299,7 +322,7 @@
                         </div>
                         <table style="margin-top: 10px;">
                             <tr>
-                                <td style="border: solid 2px rgba(181, 97, 115, 0.7); width: 25px; height: 25px; background-color: rgba(181, 97, 115, 0.7);"></td>
+                                <td class="not_available"></td>
                                 <td style="color : rgb(53, 57, 66); padding-left: 10px;"><strong>Non disponible</strong></td>
                             </tr>
                         </table>
@@ -389,7 +412,7 @@
                         </div>
                         <table style="margin-top: 10px;">
                             <tr>
-                                <td style="border: solid 2px rgba(181, 97, 115, 0.7); width: 25px; height: 25px; background-color: rgba(181, 97, 115, 0.7);"></td>
+                                <td class="not_available"></td>
                                 <td style="color : rgb(53, 57, 66); padding-left: 10px;"><strong>Non disponible</strong></td>
                             </tr>
                         </table>
@@ -422,7 +445,7 @@
                         <img class="pictures" src="img/alcove1.jpg">
                     </div>
                     <div class="mySlidesAlcoves">
-                        <img class="pictures" src="img/alcove2.jpg">
+                        <img class="pictures" src="img/alcove3.jpg">
                     </div>
                 </div>
             </div>
@@ -464,7 +487,7 @@
                     <input id="firstname" name="firstame" type="text" class="form-control" placeholder="Prénom" required>
                     <textarea id="message" name="text" class="form-control" placeholder="Laissez votre message içi"
                               required></textarea>
-                    <div id="sendEmail" class="btn btn-lg btn-primary btn-block" style="background : rgba(181, 97, 115, 0.7); border: solid 2px rgba(181, 97, 115, 0.7); color: #d7c9b8;">
+                    <div id="sendEmail" class="btn btn-lg btn-primary btn-block" style="background : rgba(211, 211, 211, 0.8); border: solid 2px #353942; color: #353942;">
                         <i class="fa fa-envelope"></i> Envoyez
                     </div>
                 </form>
@@ -633,6 +656,5 @@
 <script src="js/resume.js"></script>
 <script src="menu.js"></script>
 <script src="gallery.js"></script>
-</div>
 </body>
 </html>
