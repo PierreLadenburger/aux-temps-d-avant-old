@@ -6,18 +6,17 @@
  * Time: 13:41
  */
 
-if (isset($_POST['nom']) AND isset($_POST['description']) AND isset($_POST['type']) AND isset($_POST['lat']) AND isset($_POST['lng']) AND isset($_POST['adresse'])
+if (isset($_POST['nom']) AND isset($_POST['adresse']) AND isset($_POST['lat']) AND isset($_POST['lng']) AND isset($_POST['site'])
     && strcmp($_POST['action'], "add") == 0)
 {
     $bdd = new PDO('mysql:host=localhost;dbname=aux-temps-d-avant;charset=utf8', 'adminCura', 'adminCura');
-    $add = $bdd->prepare("INSERT INTO services(nom, description, type, lat, lng, adresse) VALUES (:nom, :description, :type, :lat, :lng, :adresse)");
+    $add = $bdd->prepare("INSERT INTO restaurants(nom, adresse, lat, lng, site) VALUES (:nom, :adresse, :lat, :lng, :site)");
     $add->execute(array(
         "nom" => $_POST['nom'],
-        "description" => $_POST['description'],
-        "type" => $_POST['type'],
+        "adresse" => $_POST['adresse'],
         "lat" => $_POST['lat'],
         "lng" => $_POST['lng'],
-        "adresse" => $_POST['adresse']
+        "site" => $_POST['site']
     ));
     echo 'Added successfully';
 }

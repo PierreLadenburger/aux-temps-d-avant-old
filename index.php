@@ -10,13 +10,14 @@
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
     <!-- Custom fonts for this template -->
     <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="vendor/devicons/css/devicons.min.css" rel="stylesheet">
     <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
-    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/blitzer/jquery-ui.css" rel="stylesheet" type="text/css">
+    <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/blitzer/jquery-ui.css" rel="stylesheet" type="text/css">
 
     <!--  <link href="vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"> -->
 
@@ -60,7 +61,7 @@
                 <li><a class="nav-link js-scroll-trigger" href="#grange" style="color: #d7c9b8;"><i class="fa fa-bed"></i> La Grange</a></li>
                 <li><a class="nav-link js-scroll-trigger" href="#alcove" style="color: #d7c9b8;"><i class="fa fa-bed"></i> L'Alcôve</a></li>
                 <li><a class="nav-link js-scroll-trigger" href="displayBook.php" style="color: #d7c9b8;"><i class="fa fa-book"></i> Livre d'or</a></li>
-                <!-- <li><a class="nav-link js-scroll-trigger" href="#proximite" style="color: #d7c9b8;"><i class="fa fa-map-marker"></i> Services</a></li> -->
+                <li><a class="nav-link js-scroll-trigger" href="displayRestaurants.php" style="color: #d7c9b8;"><i class="fa fa-map-marker"></i> Restaurants</a></li>
                 <li><a class="nav-link js-scroll-trigger" href="#contact" style="color: #d7c9b8;"><i class="fa fa-phone"></i> Contact</a></li>
                 <li><a class="nav-link" href="login.php"><i class="fa fa-lock"></i></a> </li>
 
@@ -84,7 +85,7 @@
                     Meubles de famille ou objets chinés contribuent à l'atmosphère de sérénité, mêlant un soupçon de modernité avec un maximun de confort.
                     Une entrée propre à chaque chambre permet un accès en toute liberté.
                     <br>
-                    Le petit déjeuner est servi à partir de 9h dans l'ancienne étable encore pourvue de sa mangeoire et transformée en salle à manger ou sur
+                    Le petit déjeuner est servi à partir de 9h dans l'ancienne étable encore pourvue de sa mangeoire ou sur
                     la terrasse donnant sur le jardin en été.
                     <br>
                     À 30 minutes de Strasbourg, le village est situé à l’entrée du Parc naturel
@@ -159,7 +160,7 @@
                                                                  class="fa fa-television"></i> Télévison
                         </div>
                         <div style="color : rgb(53, 57, 66);"><i style="color : rgb(53, 57, 66); margin-right: 9px;"
-                                                                 class="fa fa-bed"></i> Lit double 90 x 200 cm
+                                                                 class="fa fa-bed"></i> Lit double 2 x 90 x 200 cm
                         </div>
                         <div style="color : rgb(53, 57, 66);"><i style="color : rgb(53, 57, 66); margin-right: 9px;"
                                                                  class="fa fa-bed"></i> Lit simple 80 x 200 cm
@@ -229,6 +230,7 @@
                     </tr>
                     </tbody>
                 </table>
+                <div style="font-size: 14px; padding-left: 170px; color: rgb(53, 57, 66);">(prix par nuitée)</div>
             </div>
             <div class="col-lg-6 col-md-12 col-sm-12">
                 <div class="slideshow-container">
@@ -287,7 +289,7 @@
                                                                  class="fa fa-television"></i> Télévison
                         </div>
                         <div style="color : rgb(53, 57, 66);"><i style="color : rgb(53, 57, 66); margin-right: 9px;"
-                                                                 class="fa fa-bed"></i> Lit double 90 x 200 cm
+                                                                 class="fa fa-bed"></i> Lit double 2 x 90 x 200 cm
                         </div>
                         <div style="color : rgb(53, 57, 66);"><img src="img/frigo.png" style="height: 20px; width: 20px; margin-right: 13px;"
                                               > Mini réfrigérateur
@@ -348,6 +350,7 @@
                     </tr>
                     </tbody>
                 </table>
+                <div style="font-size: 14px; padding-left: 170px; color: rgb(53, 57, 66);">(prix par nuitée)</div>
             </div>
         </div>
     </section>
@@ -380,7 +383,7 @@
                                                                  class="fa fa-television"></i> Télévison
                         </div>
                         <div style="color : rgb(53, 57, 66);"><i style="color : rgb(53, 57, 66); margin-right: 9px;"
-                                                                 class="fa fa-bed"></i> Lit double 90 x 200 cm
+                                                                 class="fa fa-bed"></i> Lit double 2 x 90 x 200 cm
                         </div>
                         <br>
                         <div style="color : rgb(53, 57, 66);"><strong>Egalement Disponible</strong></div>
@@ -438,6 +441,7 @@
                     </tr>
                     </tbody>
                 </table>
+                <div style="font-size: 14px; padding-left: 170px; color: rgb(53, 57, 66);">(prix par nuitée)</div>
             </div>
             <div class="col-lg-6 col-md-12 col-sm-12">
                 <div class="slideshow-container">
@@ -445,7 +449,7 @@
                         <img class="pictures" src="img/alcove1.jpg">
                     </div>
                     <div class="mySlidesAlcoves">
-                        <img class="pictures" src="img/alcove3.jpg">
+                        <img class="pictures" src="img/alcove2.jpg">
                     </div>
                 </div>
             </div>
@@ -471,7 +475,7 @@
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-3">
                 <div style="color : rgb(53, 57, 66);"><strong>Propriétaires</strong></div>
-                <div style="color : rgb(53, 57, 66);"><i class="fa fa-user"></i> Christian & Carine Cura</div>
+                <div style="color : rgb(53, 57, 66);"><i class="fa fa-user"></i> Carine & Christian Cura</div>
                 <div style="color : rgb(53, 57, 66);"><i class="fa fa-phone"></i> +33 (0)3 88 72 88 60</div>
                 <div style="color : rgb(53, 57, 66);"><i class="fa fa-phone"></i> +33 (0)6 76 56 90 33</div>
                 <div style="color : rgb(53, 57, 66);"><i class="fa fa-flag"></i> Français & Allemand</div>
@@ -650,8 +654,8 @@
     });
 </script>
 <script type="text/javascript" src="planning.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.js"></script>
 <!-- Custom scripts for this template -->
 <script src="js/resume.js"></script>
 <script src="menu.js"></script>

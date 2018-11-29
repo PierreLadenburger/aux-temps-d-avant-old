@@ -62,58 +62,34 @@ require_once "common.php";
         <div class="col-sm-3 col-md-3 col-lg-2">
             <?php printSideMenu() ?>
         </div>
-        <h2 class="titre_room">Services</h2>
+        <h2 class="titre_room">Restaurants</h2>
         <div class="col-sm-9 col-md-9 col-lg-10">
-            <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-4">
-                    <h2 style="font-family: Didot;"><i class="fa fa-map"></i> Carte</h2>
-                        <!-- map -->
-                        <div id="mapservices"></div>
-
+            <h2 style="font-family: Didot;"><i class="fa fa-address-book"></i> Ajouter restaurant</h2>
+            <form class="form-signin" style="margin: 0">
+                <div class="form-group">
+                    <input id="nom" name="nom" type="text" class="form-control" placeholder="Nom">
                 </div>
-                <div class="col-sm-12 col-md-12 col-lg-8">
-                    <h2 style="font-family: Didot;"><i class="fa fa-address-book"></i> Ajouter Service</h2>
-                    <form class="form-signin" style="margin: 0">
-                        <div class="form-group">
-                            <input id="nom" name="text" type="text" class="form-control" placeholder="Nom">
-                        </div>
-                        <div class="form-group">
-                            <input id="description" name="description" type="text" class="form-control" placeholder="Description">
-                        </div>
-                        <div class="form-group">
-                            <select class="form-control" id="type">
-                                <option>Restaurants</option>
-                                <option>Bars</option>
-                                <option>Sorties</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <input id="lat" name="lat" type="number" class="form-control" placeholder="Latitude">
-                        </div>
-                        <div class="form-group">
-                            <input id="lng" name="lng" type="number" class="form-control" placeholder="Longitude">
-                        </div>
-                        <div class="form-group">
-                            <input id="address" name="address" type="text" class="form-control" placeholder="Adresse">
-                        </div>
-                        <div class="btn btn-lg btn-primary btn-block" id="add"
-                             style="background : rgba(181, 97, 115, 0.7); border: solid 2px rgba(181, 97, 115, 0.7); color: #d7c9b8;">
-                            <i class="fa fa-plus-circle"></i> Ajouter
-                        </div>
-                    </form>
+                <div class="form-group">
+                    <input id="adresse" name="adresse" type="text" class="form-control" placeholder="Adresse">
                 </div>
-            </div>
+                <div class="form-group">
+                    <input id="site" name="site" type="text" class="form-control" placeholder="Site">
+                </div>
+                <div class="btn btn-lg btn-primary btn-block" id="add"
+                     style="background : rgba(211, 211, 211, 0.8); border: solid 2px #353942; color: #353942;">
+                    <i class="fa fa-plus-circle"></i> Ajouter
+                </div>
+            </form>
             <h2 style="font-family: Didot;"><i class="fa fa-list"></i> Liste</h2>
             <?php
             echo '<table style="color: rgb(53, 57, 66); width: 100%;">
                           <thead>
                             <tr>
                                   <th class="in_table" scope="col">Nom</th>
-                                  <th class="in_table" scope="col">Description</th>
-                                  <th class="in_table" scope="col">Type</th>
+                                  <th class="in_table" scope="col">Adresse</th>
                                   <th class="in_table" scope="col">Latitude</th>
                                   <th class="in_table" scope="col">Longitude</th>
-                                  <th class="in_table" scope="col">Adresse</th>
+                                  <th class="in_table" scope="col">Site</th>
                                   <th class="in_table" scope="col">Action</th>
                             </tr>
                           </thead>
@@ -121,16 +97,15 @@ require_once "common.php";
             try  {
                 $bdd = new PDO('mysql:host=localhost;dbname=aux-temps-d-avant;charset=utf8', 'adminCura', 'adminCura');
 
-                $rep = $bdd->query('SELECT * FROM services');
+                $rep = $bdd->query('SELECT * FROM restaurants');
                 foreach ($rep as $repBis)
                 {
                     echo '<tr>';
                     echo '<td class="in_table">' . $repBis['nom'] . '</td>';
-                    echo '<td class="in_table">' . $repBis['description'] . '</td>';
-                    echo '<td class="in_table">' . $repBis['type'] . '</td>';
+                    echo '<td class="in_table">' . $repBis['adresse'] . '</td>';
                     echo '<td class="in_table">' . $repBis['lat'] . '</td>';
                     echo '<td class="in_table">' . $repBis['lng'] . '</td>';
-                    echo '<td class="in_table">' . $repBis['adresse'] . '</td>';
+                    echo '<td class="in_table">' . $repBis['site'] . '</td>';
                     echo '<td class="in_table"><button id="del" value="'. $repBis['id'] .'" type="button" class="btn btn-danger"><i class="fa fa-trash"></i> Supprimer</button></td>';
                     echo '</tr>';
                 }
@@ -147,61 +122,90 @@ require_once "common.php";
         </div>
     </div>
 </div>
-
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZwFBQDXkJtIr5ZGpmXKQpHcbd025gyWU&"></script>
-<script>
-    var geocoder;
-    var map;
-    var address = "new york city";
-    function initMap() {
-        var map = new google.maps.Map(document.getElementById('mapservices'), {
-            zoom: 8,
-            center: {lat: -34.397, lng: 150.644}
-        });
-        geocoder = new google.maps.Geocoder();
-        codeAddress(geocoder, map);
-    }
+<script src="vendor/jquery/jquery.min.js"></script>
 
-    function codeAddress(geocoder, map) {
-        geocoder.geocode({'address': address}, function(results, status) {
+<script>
+
+        $(document).on('click', '#add', function() {
+        var nom = $('#nom').val();
+        var adresse = $('#adresse').val();
+        var site = $('#site').val();
+
+
+
+        if (nom !== '' && adresse !== '' && site !== '')
+        {
+            var geocoder;
+
+            /*var map = new google.maps.Map(document.getElementById('mapservices'), {
+                zoom: 8,
+                center: {lat: -34.397, lng: 150.644}
+            });*/
+            geocoder = new google.maps.Geocoder();
+            geocoder.geocode({'address': adresse}, function(results, status) {
             if (status === 'OK') {
-                map.setCenter(results[0].geometry.location);
+                var conf = confirm("Un résultat a était trouvé correspond t'il à votre demande ?\nadresse: " + results[0].formatted_address);
+                /*map.setCenter(results[0].geometry.location);
                 var marker = new google.maps.Marker({
                     map: map,
                     position: results[0].geometry.location
-                });
+                });*/
+                if (conf === true) {
+                    console.log(results);
+                    console.log(results[0].formatted_address);
+                    console.log(results[0].geometry.location.lat());
+                    console.log(results[0].geometry.location.lng());
+                    var dataString = 'nom=' + nom + "&adresse=" + results[0].formatted_address + "&lat=" + results[0].geometry.location.lat() + "&lng=" + results[0].geometry.location.lng() + "&site=" + site + "&action=add";
+                    $.ajax({
+                        type: "POST",
+                        url: "editRestaurants.php",
+                        data: dataString,
+                        success: function(resultData){
+                            $('#nom').val("");
+                            $('#adresse').val("");
+                            $('#site').val("");
+                        }
+                    });
+                    console.log(dataString);
+                }
             } else {
-                alert('Geocode was not successful for the following reason: ' + status);
+                alert("Aucune adresse correspondant à votre demande");
             }
         });
-    }
+
+        }
+    });
+
 </script>
 
-<script src="vendor/jquery/jquery.min.js"></script>
-<script>
-    $(document).on('click', '#add', function() {
-        var nom = $('#nom').val();
-        var description = $('#description').val();
-        var type = $('#type').val();
-        var lat = $('#lat').val();
-        var lng = $('#lng').val();
-        var address = $('#address').val();
 
-        if (nom !== '' && description !== '' && type !== ''
-            && lat !== '' && lng !== '')
+
+<script>
+   /* $(document).on('click', '#add', function() {
+        var nom = $('#nom').val();
+        var ville = $('#ville').val();
+        var distance = $('#distance').val();
+        var latitude = $('#latitude').val();
+        var longitude = $('#longitude').val();
+        var site = $('#site').val();
+
+        if (nom !== '' && ville !== '' && distance !== ''
+            && latitude !== '' && longitude !== '' && site !== '')
         {
-            var dataString = 'type=' + type +'&nom=' + nom + '&description=' + description + "&lat=" + lat + "&lng=" + lng + "&adresse=" + address + "&action=add";
+            var dataString = 'nom=' + nom +'&ville=' + ville + '&distance=' + distance + "&latitude=" + latitude + "&longitude=" + longitude + "&site=" + site + "&action=add";
             $.ajax({
                 type: "POST",
-                url: "editServices.php",
+                url: "editRestaurants.php",
                 data: dataString,
                 success: function(resultData){
                     location.reload();
                     $('#nom').val("");
-                    $('#description').val("");
-                    $('#lat').val("");
-                    $('#lng').val("");
-                    $('#address').val("");
+                    $('#ville').val("");
+                    $('#latitude').val("");
+                    $('#longitude').val("");
+                    $('#distance').val("");
+                    $('#site').val("");
                 }
             });
             console.log(dataString);
@@ -222,7 +226,7 @@ require_once "common.php";
             });
         }
     });
-
+*/
 </script>
 <script type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="planning.js"></script>
