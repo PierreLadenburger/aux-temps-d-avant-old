@@ -1,5 +1,12 @@
 <?php
 require_once "common.php";
+session_start();
+require_once 'common.php';
+if ($_SESSION['admin'] != '1') {
+    echo 'ok';
+    header('location: index.php');
+    exit();
+}
 ?>
 <html lang="en"><head>
 
@@ -37,7 +44,7 @@ require_once "common.php";
     </style>
 </head>
 
-<body style="background-color: #d7c9b8; font-family: Didot; font-size: 20px;" class="background-style">
+<body style="background-color: #d7c9b8; font-family: Didot; font-size: 20px;">
 <nav class="navbar navbar-default navbar-fixed-top menu">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -165,6 +172,7 @@ require_once "common.php";
                             $('#nom').val("");
                             $('#adresse').val("");
                             $('#site').val("");
+                            location.reload();
                         }
                     });
                     console.log(dataString);
@@ -182,43 +190,13 @@ require_once "common.php";
 
 
 <script>
-   /* $(document).on('click', '#add', function() {
-        var nom = $('#nom').val();
-        var ville = $('#ville').val();
-        var distance = $('#distance').val();
-        var latitude = $('#latitude').val();
-        var longitude = $('#longitude').val();
-        var site = $('#site').val();
-
-        if (nom !== '' && ville !== '' && distance !== ''
-            && latitude !== '' && longitude !== '' && site !== '')
-        {
-            var dataString = 'nom=' + nom +'&ville=' + ville + '&distance=' + distance + "&latitude=" + latitude + "&longitude=" + longitude + "&site=" + site + "&action=add";
-            $.ajax({
-                type: "POST",
-                url: "editRestaurants.php",
-                data: dataString,
-                success: function(resultData){
-                    location.reload();
-                    $('#nom').val("");
-                    $('#ville').val("");
-                    $('#latitude').val("");
-                    $('#longitude').val("");
-                    $('#distance').val("");
-                    $('#site').val("");
-                }
-            });
-            console.log(dataString);
-        }
-    });
-
     $(document).on('click', '#del', function() {
         var conf = confirm("Etes-vous sur de vouloir supprimer ce service ?");
         if (conf === true) {
             var dataString = "id=" + $(this).val() + "&action=delete";
             $.ajax({
                 type: "POST",
-                url: "editServices.php",
+                url: "editRestaurants.php",
                 data: dataString,
                 success: function(resultData){
                     location.reload();
@@ -226,7 +204,7 @@ require_once "common.php";
             });
         }
     });
-*/
+
 </script>
 <script type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="planning.js"></script>

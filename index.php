@@ -56,12 +56,17 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li><a class="nav-link js-scroll-trigger" href="#video" style="color: #d7c9b8;"><i class="fa fa-video-camera"></i> Vidéo</a></li>
-                <li><a class="nav-link js-scroll-trigger" href="#forge" style="color: #d7c9b8;"><i class="fa fa-bed"></i> La Forge</a></li>
-                <li><a class="nav-link js-scroll-trigger" href="#grange" style="color: #d7c9b8;"><i class="fa fa-bed"></i> La Grange</a></li>
-                <li><a class="nav-link js-scroll-trigger" href="#alcove" style="color: #d7c9b8;"><i class="fa fa-bed"></i> L'Alcôve</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #d7c9b8; background-color: #353942;"><i class="fa fa-bed"></i> Les chambres<span style="color: #d7c9b8;" class="caret"></span></a>
+                    <ul class="dropdown-menu" style="background-color: #353942; border-color: #353942; font-size: 20px;">
+                    <li><a class="nav-link js-scroll-trigger" href="#forge" style="color: #d7c9b8;"><i class="fa fa-bed"></i> La Forge</a></li>
+                    <li><a class="nav-link js-scroll-trigger" href="#grange" style="color: #d7c9b8;"><i class="fa fa-bed"></i> La Grange</a></li>
+                    <li><a class="nav-link js-scroll-trigger" href="#alcove" style="color: #d7c9b8;"><i class="fa fa-bed"></i> L'Alcôve</a></li>
+                    </ul>
+                </li>
                 <li><a class="nav-link js-scroll-trigger" href="displayBook.php" style="color: #d7c9b8;"><i class="fa fa-book"></i> Livre d'or</a></li>
                 <li><a class="nav-link js-scroll-trigger" href="displayRestaurants.php" style="color: #d7c9b8;"><i class="fa fa-map-marker"></i> Restaurants</a></li>
+                <li><a class="nav-link js-scroll-trigger" href="displayServices.php" style="color: #d7c9b8;"><i class="fa fa-map-pin"></i> Services</a></li>
                 <li><a class="nav-link js-scroll-trigger" href="#contact" style="color: #d7c9b8;"><i class="fa fa-phone"></i> Contact</a></li>
                 <li><a class="nav-link" href="login.php"><i class="fa fa-lock"></i></a> </li>
 
@@ -99,24 +104,56 @@
                 <!-- Full-width images with number text -->
                 <div class="slideshow-container" style="padding-top: 45px;">
                     <div class="mySlidesGallery">
-                        <img src="img/maison1.jpg" alt="maison" style="width:100%;">
+                        <img class="pictures" src="img/bat1.jpg" alt="maison" style="width:100%;">
                     </div>
 
                     <div class="mySlidesGallery">
-                        <img src="img/maison2.jpg" alt="maison" style="width:100%">
-                    </div>
-
-                    <div class="mySlidesGallery">
-                        <img src="img/maison3.jpg" style="width:100%">
+                        <img class="pictures" src="img/bat3.jpg" alt="maison" style="width:100%">
                     </div>
                     <div class="mySlidesGallery">
-                        <img src="img/maison6.jpg" style="width:100%">
+                        <img class="pictures" src="img/cour4.jpg" style="width:100%">
                     </div>
                     <div class="mySlidesGallery">
-                        <img src="img/maison7.jpg" style="width:100%">
+                        <img class="pictures" src="img/cour6.jpg" style="width:100%">
                     </div>
                     <div class="mySlidesGallery">
-                        <img src="img/maison8.jpg" style="width:100%">
+                        <img class="pictures" src="img/cour7.jpg" style="width:100%">
+                    </div>
+                    <div class="mySlidesGallery">
+                        <img class="pictures" src="img/cour8.jpg" style="width:100%">
+                    </div>
+                    <div class="mySlidesGallery">
+                        <img class="pictures" src="img/cour10.jpg" style="width:100%">
+                    </div>
+                    <div class="mySlidesGallery">
+                        <img class="pictures" src="img/cour11.jpg" style="width:100%">
+                    </div>
+                    <div class="mySlidesGallery">
+                        <img class="pictures" src="img/jardin1.jpg" style="width:100%">
+                    </div>
+                    <div class="mySlidesGallery">
+                        <img class="pictures" src="img/jardin3.jpg" style="width:100%">
+                    </div>
+                    <div class="mySlidesGallery">
+                        <img class="pictures" src="img/jardin5.jpg" style="width:100%">
+                    </div>
+                    <div class="mySlidesGallery">
+                        <img class="pictures" src="img/jardin7.jpg" style="width:100%">
+                    </div>
+                    <div class="mySlidesGallery">
+                        <img class="pictures" src="img/noel1.jpg" style="width:100%">
+                    </div>
+                    <div class="mySlidesGallery">
+                        <img class="pictures" src="img/rue1.jpg" style="width:100%">
+                    </div>
+                    <div class="mySlidesGallery">
+                        <img class="pictures" src="img/rue2.jpg" style="width:100%">
+                    </div>
+                    <div class="mySlidesGallery">
+                        <img class="pictures" src="img/rue4.jpg" style="width:100%">
+                    </div>
+                    <div class="mySlidesGallery">
+                        <img class="pictures" src="img/terrasse2.jpg" style="width:100%">
                     </div>
                     <!-- Next and previous buttons -->
                     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -235,10 +272,22 @@
             <div class="col-lg-6 col-md-12 col-sm-12">
                 <div class="slideshow-container">
                     <div class="mySlidesForges">
+                        <img class="pictures" src="img/forge3.jpg">
+                    </div>
+                    <div class="mySlidesForges">
+                        <img class="pictures" src="img/forge6.jpg">
+                    </div>
+                    <div class="mySlidesForges">
+                        <img class="pictures" src="img/forge5.jpg">
+                    </div>
+                    <div class="mySlidesForges">
+                        <img class="pictures" src="img/forge4.jpg">
+                    </div>
+                    <div class="mySlidesForges">
                         <img class="pictures" src="img/forge1.jpg">
                     </div>
                     <div class="mySlidesForges">
-                        <img class="pictures" src="img/forge2.jpg">
+                        <img class="pictures" src="img/forge7.jpg">
                     </div>
                 </div>
             </div>
@@ -253,13 +302,16 @@
                         <img class="pictures" src="img/grange1.jpg">
                     </div>
                     <div class="mySlidesGranges">
-                        <img class="pictures" src="img/grange2.jpg">
+                        <img class="pictures" src="img/grange6.jpg">
                     </div>
                     <div class="mySlidesGranges">
-                        <img class="pictures" src="img/grange3.jpg">
+                        <img class="pictures" src="img/grange7.jpg">
                     </div>
                     <div class="mySlidesGranges">
-                        <img class="pictures" src="img/grange4.jpg">
+                        <img class="pictures" src="img/grange8.jpg">
+                    </div>
+                    <div class="mySlidesGranges">
+                        <img class="pictures" src="img/grange9.jpg">
                     </div>
                 </div>
             </div>
@@ -451,24 +503,19 @@
                     <div class="mySlidesAlcoves">
                         <img class="pictures" src="img/alcove2.jpg">
                     </div>
+                    <div class="mySlidesAlcoves">
+                        <img class="pictures" src="img/alcove4.jpg">
+                    </div>
+                    <div class="mySlidesAlcoves">
+                        <img class="pictures" src="img/alcove5.jpg">
+                    </div>
+                 <!--   <div class="mySlidesAlcoves">
+                        <img style="transform: rotate(90deg);" class="pictures" src="img/alcove6.jpg">
+                    </div> -->
                 </div>
             </div>
         </div>
     </section>
- <!--   <section class="resume-section" id="proximite">
-        <h2 class="titre_all">Services</h2>
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6">
-                <div id="mapservices"></div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-6">
-                <select class="form-control" id="services">
-                    <option>Restaurants</option>
-                    <option>Bars</option>
-                </select>
-            </div>
-        </div>
-    </section>-->
     <section class="resume-section" id="contact">
         <h2 class="titre_all">Contact</h2>
 
@@ -506,20 +553,7 @@
 </div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZwFBQDXkJtIr5ZGpmXKQpHcbd025gyWU&"></script>
-<script>
-/*        var pos = {lat: 48.903975, lng: 7.661313};
-        var map = new google.maps.Map(document.getElementById('mapservices'), {
-            zoom: 8,
-            center: pos
-        });
 
-        var marker = new google.maps.Marker({
-            position: pos,
-            map: map,
-            name: "Aux temps d'avant",
-            title: "Aux temps d'avant",
-        });*/
-</script>
 <!-- Bootstrap core JavaScript -->
 
 <!-- Bootstrap core JavaScript -->

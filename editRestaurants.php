@@ -23,7 +23,7 @@ if (isset($_POST['nom']) AND isset($_POST['adresse']) AND isset($_POST['lat']) A
 if (isset($_POST['id']) AND strcmp($_POST['action'], "delete") == 0)
 {
     $bdd = new PDO('mysql:host=localhost;dbname=aux-temps-d-avant;charset=utf8', 'adminCura', 'adminCura');
-    $add = $bdd->prepare("DELETE FROM services WHERE id = :id");
+    $add = $bdd->prepare("DELETE FROM restaurants WHERE id = :id");
     $add->execute(array(
         "id" => intval($_POST['id']),
     ));

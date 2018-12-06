@@ -22,12 +22,6 @@
     <!-- Custom styles for this template -->
     <link href="css/resume.css" rel="stylesheet">
 
-    <style>
-        #mapservices {
-            width: 470px;
-            height: 360px;
-        }
-    </style>
     <!-- Plugin JavaScript -->
 
     <!-- Custom scripts for this template -->
@@ -78,13 +72,14 @@
                     foreach ($rep as $repBis)
                     {
                         echo "<div>
-                                   <div>
+                                   <div class='text'>
                                        " . $repBis['nom'] .
                             "</div>                                    
-                                    <div>". $repBis['adresse'] .
+                                    <div class='text'>". $repBis['adresse'] .
                             "</div>
-                             <a href='".$repBis['site'] ."'>" . $repBis['site'] ."</a>
-                             <button class='btn btn-info' id='road' value='". $repBis['lat'] . "|" . $repBis['lng'] . "'><i class='fa fa-map-marker'></i></button>                                   
+                             <a style='color: darkred;' href='".$repBis['site'] ."'>" . $repBis['site'] ."</a><br>
+                             <button style='background-color: darkred; border-color: darkred;' class='btn btn-info' id='road' value='". $repBis['lat'] . "|" . $repBis['lng'] . "|" . $repBis['nom'] . "'><i class='fa fa-map-marker'></i></button>
+                             <br><br>                                   
                              </div>";
                     }
                 }
@@ -93,11 +88,15 @@
                     echo $exception->getMessage();
                 }
                 ?>
+
             </div>
 
             <div class="col-lg-8 col-md-7 col-sm-7">
                 <!-- CARTE DES SERVICES -->
-                <div id="mapservices"></div>
+                <div style="position: fixed;">
+                    <div style="width: 870px; height: 560px; position: fixed;" id="mapservices"></div>
+                </div>
+
             </div>
             
         </div>
@@ -108,26 +107,21 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZwFBQDXkJtIr5ZGpmXKQpHcbd025gyWU&"></script>
 <script>
     var pos = {lat: 48.903975, lng: 7.661313};
+    var flightPath;
     var map = new google.maps.Map(document.getElementById('mapservices'), {
-        zoom: 11,
+        zoom: 10,
         center: pos
     });
+
 
     var marker = new google.maps.Marker({
         position: pos,
         map: map,
         name: "Aux temps d'avant",
         title: "Aux temps d'avant",
+        icon: "img/blue_MarkerA.png"
     });
 
-    function getRandomColor() {
-        var letters = '0123456789ABCDEF';
-        var color = '#';
-        for (var i = 0; i < 6; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
-        }
-        return color;
-    }
 
     $(document).on('click', '#road', function() {
 
@@ -144,12 +138,16 @@
                 success: function(resultData){
 
                     var pos = new google.maps.LatLng(coordinates[0], coordinates[1]);
+                    var dist = resultData.routes[0].summary.distance / 1000;
+                    var time = resultData.routes[0].summary.duration / 60;
                     var marker = new google.maps.Marker({
                         position: pos,
                         map: map,
-                        name: "Aux temps d'avant",
-                        title: "Aux temps d'avant",
-                    });
+                        name: "Aux tem",
+                        title: coordinates[2] + "\ndistance: " + dist.toFixed(2) + " km\ntemps: " + time.toFixed(0) + " min",
+                        icon: "img/red_MarkerA.png"
+
+                });
                     var flightPlanCoordinates = [];
                     var pathCoordinates = resultData.routes[0].geometry;
                     pathCoordinates.forEach(function (element) {
@@ -160,7 +158,7 @@
                     console.log(flightPlanCoordinates);
 
 
-                    var flightPath = new google.maps.Polyline({
+                    flightPath = new google.maps.Polyline({
                         path: flightPlanCoordinates,
                         geodesic: true,
                         strokeColor: '#FF0000',
@@ -174,8 +172,6 @@
             });
 
     });
-
-
 </script>
 </body>
 </html>
