@@ -20,11 +20,11 @@
     <!-- Custom fonts for this template -->
     <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="vendor/devicons/css/devicons.min.css" rel="stylesheet">
     <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
     <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/blitzer/jquery-ui.css" rel="stylesheet" type="text/css">
     <!--  <link href="vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
 
 
@@ -49,7 +49,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand js-scroll-trigger" href="index.php"  style="color: #d7c9b8;"><i class="fa fa-home"></i> Aux Temps D'Avant</a>
+            <a class="navbar-brand js-scroll-trigger" href="index.php"  style="color: #d7c9b8;"><i class="fas fa-home"></i> Aux Temps D'Avant</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -67,7 +67,7 @@
             <div class="col-sm-9 col-md-9 col-lg-10">
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-4">
-                        <h2 style="font-family: Didot;"><i class="fa fa-calendar"></i> Planning</h2>
+                        <h2 style="font-family: Didot;"><i class="fas fa-calendar-alt"></i> Planning</h2>
                         <div style="margin-top: 10px; font-size: 15px; " id="datepickerGrange">
                             <?php
                             try
@@ -89,7 +89,7 @@
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-12 col-lg-8">
-                        <h2 style="font-family: Didot;"><i class="fa fa-address-book"></i> Ajouter Réservation</h2>
+                        <h2 style="font-family: Didot;"><i class="fas fa-address-book"></i> Ajouter Réservation</h2>
                         <form class="form-signin" style="margin: 0">
                             <div class="form-group">
                                 <input id="prenom" name="prenom" type="text" class="form-control" placeholder="Prénom">
@@ -105,12 +105,12 @@
                                 <input id="dateEnd" name="dateEnd" type="date" class="form-control">
                             </div>
                             <div class="btn btn-lg btn-primary btn-block" id="add" style="background : rgba(211, 211, 211, 0.8); border: solid 2px #353942; color: #353942;">
-                                <i class="fa fa-plus-circle"></i> Ajouter
+                                <i class="fas fa-plus-circle"></i> Ajouter
                             </div>
                         </form>
                     </div>
                 </div>
-                <h2 style="font-family: Didot;"><i class="fa fa-list"></i> Liste</h2>
+                <h2 style="font-family: Didot;"><i class="fas fa-list"></i> Liste</h2>
                 <?php
                 echo '<table style="color: rgb(53, 57, 66); width: 100%;">
                           <thead>
@@ -133,7 +133,7 @@
                         echo '<td class="in_table">' . $repBis['nom'] . '</td>';
                         echo '<td class="in_table">' . $repBis['prenom'] . '</td>';
                         echo '<td class="in_table">' . date('d-m-Y', strtotime($repBis['date'])) . '</td>';
-                        echo '<td class="in_table"><button id="del" value="'. $repBis['id'] .'" type="button" class="btn btn-danger"><i class="fa fa-trash"></i> Supprimer</button></td>';
+                        echo '<td class="in_table"><button id="del" value="'. $repBis['id'] .'" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Supprimer</button></td>';
                         echo '</tr>';
                     }
                 }

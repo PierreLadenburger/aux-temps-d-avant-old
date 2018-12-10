@@ -14,10 +14,10 @@
     <!-- Custom fonts for this template -->
     <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="vendor/devicons/css/devicons.min.css" rel="stylesheet">
     <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
     <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/blitzer/jquery-ui.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
     <!--  <link href="vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"> -->
 
@@ -56,19 +56,29 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #d7c9b8; background-color: #353942;"><i class="fa fa-bed"></i> Les chambres<span style="color: #d7c9b8;" class="caret"></span></a>
+                <li class="dropdown" style="cursor: pointer;">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #d7c9b8; background-color: #353942;"><i class="fas fa-bed"></i> Les chambres<span style="color: #d7c9b8;" class="caret"></span></a>
                     <ul class="dropdown-menu" style="background-color: #353942; border-color: #353942; font-size: 20px;">
-                    <li><a class="nav-link js-scroll-trigger" href="#forge" style="color: #d7c9b8;"><i class="fa fa-bed"></i> La Forge</a></li>
-                    <li><a class="nav-link js-scroll-trigger" href="#grange" style="color: #d7c9b8;"><i class="fa fa-bed"></i> La Grange</a></li>
-                    <li><a class="nav-link js-scroll-trigger" href="#alcove" style="color: #d7c9b8;"><i class="fa fa-bed"></i> L'Alcôve</a></li>
+                    <li><a class="nav-link js-scroll-trigger" href="#forge" style="color: #d7c9b8;"> La Forge</a></li>
+                    <li><a class="nav-link js-scroll-trigger" href="#grange" style="color: #d7c9b8;"> La Grange</a></li>
+                    <li><a class="nav-link js-scroll-trigger" href="#alcove" style="color: #d7c9b8;"> L'Alcôve</a></li>
                     </ul>
                 </li>
-                <li><a class="nav-link js-scroll-trigger" href="displayBook.php" style="color: #d7c9b8;"><i class="fa fa-book"></i> Livre d'or</a></li>
-                <li><a class="nav-link js-scroll-trigger" href="displayRestaurants.php" style="color: #d7c9b8;"><i class="fa fa-map-marker"></i> Restaurants</a></li>
-                <li><a class="nav-link js-scroll-trigger" href="displayServices.php" style="color: #d7c9b8;"><i class="fa fa-map-pin"></i> Services</a></li>
-                <li><a class="nav-link js-scroll-trigger" href="#contact" style="color: #d7c9b8;"><i class="fa fa-phone"></i> Contact</a></li>
-                <li><a class="nav-link" href="login.php"><i class="fa fa-lock"></i></a> </li>
+                <li><a class="nav-link js-scroll-trigger" href="displayBook.php" style="color: #d7c9b8;"><i class="fas fa-book"></i> Livre d'or</a></li>
+                <li><a class="nav-link js-scroll-trigger" href="displayRestaurants.php" style="color: #d7c9b8;"><i class="fas fa-map-marker-alt"></i> Restaurants</a></li>
+                <li class="dropdown" style="cursor: pointer;">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #d7c9b8; background-color: #353942;"><i class="fas fa-map-marker-alt"></i> Tourisme<span style="color: #d7c9b8;" class="caret"></span></a>
+                    <ul class="dropdown-menu" style="background-color: #353942; border-color: #353942; font-size: 20px;">
+                        <li><a class="nav-link js-scroll-trigger" href="balades.php" style="color: #d7c9b8;"> Balades</a></li>
+                        <li><a class="nav-link js-scroll-trigger" href="cites.php" style="color: #d7c9b8;"> Cités</a></li>
+                        <li><a class="nav-link js-scroll-trigger" href="musees.php" style="color: #d7c9b8;"> Musées</a></li>
+                        <li><a class="nav-link js-scroll-trigger" href="memoires.php" style="color: #d7c9b8;"> Mémoires</a></li>
+                        <li><a class="nav-link js-scroll-trigger" href="terroir.php" style="color: #d7c9b8;"> Terroir</a></li>
+                        <li><a class="nav-link js-scroll-trigger" href="#alcove" style="color: #d7c9b8;"> Divertissements</a></li>
+                    </ul>
+                </li>
+                <li><a class="nav-link js-scroll-trigger" href="#contact" style="color: #d7c9b8;"><i class="fas fa-phone"></i> Contact</a></li>
+                <li><a class="nav-link" href="login.php"><i class="fas fa-lock"></i></a> </li>
 
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -539,7 +549,7 @@
                     <textarea id="message" name="text" class="form-control" placeholder="Laissez votre message içi"
                               required></textarea>
                     <div id="sendEmail" class="btn btn-lg btn-primary btn-block" style="background : rgba(211, 211, 211, 0.8); border: solid 2px #353942; color: #353942;">
-                        <i class="fa fa-envelope"></i> Envoyez
+                        <i class="fas fa-envelope"></i> Envoyez
                     </div>
                 </form>
             </div>

@@ -79,7 +79,7 @@
                                     <div class='text'>". $repBis['adresse'] .
                             "</div>
                              <a style='color: darkred;' href='".$repBis['site'] ."'>" . $repBis['site'] ."</a><br>
-                             <button style='background-color: darkred; border-color: darkred;' class='btn btn-info' id='road' value='". $repBis['lat'] . "|" . $repBis['lng'] . "|" . $repBis['nom'] . "'><i class='fa fa-map-marker'></i></button>
+                             <button style='background-color: darkred; border-color: darkred;' class='btn btn-info' id='road' value='". $repBis['lat'] . "|" . $repBis['lng'] . "|" . $repBis['nom'] . "'><i class='fas fa-map-marker-alt'></i></button>
                              <br><br>                                   
                              </div>";
                     }
