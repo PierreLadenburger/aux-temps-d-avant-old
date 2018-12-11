@@ -38,20 +38,10 @@ if (isset($_POST['name']) && isset($_POST['firstname']) && isset($_POST['email']
     $mail->SMTPAuth = true;
 
 //Username to use for SMTP authentication - use full email address for gmail
-    //$mail->Username = "carinecura@gmail.com";
+    $mail->Username = "carinecura@gmail.com";
 
 //Password to use for SMTP authentication
-    //$mail->Password = "bulle2267";
-
-    $mail->Username = "pladenburger67@gmail.com";
-    $mail->Password = "pierre123";
-
-//Set who the message is to be sent from
-    //$mail->From = "carinecura@gmail.com";
-
-
-//Set an alternative reply-to address
-    //$mail->addReplyTo('replyto@example.com', 'First Last');
+    $mail->Password = "bulle2267";
 
     $mail->setFrom($_POST['email']);
     $mail->addReplyTo($_POST['email']);
@@ -65,7 +55,7 @@ if (isset($_POST['name']) && isset($_POST['firstname']) && isset($_POST['email']
     $mail->Subject = 'Message';
 
 //Replace the plain text body with one created manually
-    $mail->Body = "<div>Informations &eacute;metteur:" . "<br>Nom: " . $_POST['name'] . "<br>Pr&eacute;nom: " . $_POST['firstname'] . "<br>Email: " . $_POST['email']
+    $mail->Body = "<div>Nom: " . $_POST['name'] . "<br>Pr&eacute;nom: " . $_POST['firstname'] . "<br>Email: " . $_POST['email']
         . "<br>Message: <br>" . $_POST['message'] . "</div>";
 //Attach an image file
 

@@ -74,9 +74,10 @@
                         <li><a class="nav-link js-scroll-trigger" href="musees.php" style="color: #d7c9b8;"> Musées</a></li>
                         <li><a class="nav-link js-scroll-trigger" href="memoires.php" style="color: #d7c9b8;"> Mémoires</a></li>
                         <li><a class="nav-link js-scroll-trigger" href="terroir.php" style="color: #d7c9b8;"> Terroir</a></li>
-                        <li><a class="nav-link js-scroll-trigger" href="#alcove" style="color: #d7c9b8;"> Divertissements</a></li>
+                        <li><a class="nav-link js-scroll-trigger" href="divertissements.php" style="color: #d7c9b8;"> Divertissements</a></li>
                     </ul>
                 </li>
+                <li><a class="nav-link js-scroll-trigger" href="displayAilleurs.php" style="color: #d7c9b8;"><i class="fas fa-star"></i> Ailleurs</a></li>
                 <li><a class="nav-link js-scroll-trigger" href="#contact" style="color: #d7c9b8;"><i class="fas fa-phone"></i> Contact</a></li>
                 <li><a class="nav-link" href="login.php"><i class="fas fa-lock"></i></a> </li>
 

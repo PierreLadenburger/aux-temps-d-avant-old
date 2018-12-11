@@ -69,7 +69,7 @@ if ($_SESSION['admin'] != '1') {
         <div class="col-sm-3 col-md-3 col-lg-2">
             <?php printSideMenu() ?>
         </div>
-        <h2 class="titre_room">Tourisme</h2>
+        <h2 class="titre_room">Ailleurs</h2>
         <div class="col-sm-9 col-md-9 col-lg-10">
             <h2 style="font-family: Didot;"><i class="fas fa-address-book"></i> Ajouter destination</h2>
             <form class="form-signin" style="margin: 0">
@@ -84,12 +84,8 @@ if ($_SESSION['admin'] != '1') {
                 </div>
                 <div class="form-group">
                     <select id="categorie" name="categorie" class="form-control">
-                        <option value="balades">Balades</option>
-                        <option value="cites">Cités</option>
-                        <option value="musees">Musées</option>
-                        <option value="memoires">Mémoires</option>
-                        <option value="terroir">Terroir</option>
-                        <option value="divers">Divers</option>
+                        <option value="maison">Maison de vacances</option>
+                        <option value="chambre">Chambre d'hôtes</option>
                     </select>
                 </div>
                 <div class="btn btn-lg btn-primary btn-block" id="add"
@@ -113,7 +109,7 @@ if ($_SESSION['admin'] != '1') {
             try  {
                 $bdd = new PDO('mysql:host=localhost;dbname=aux-temps-d-avant;charset=utf8', 'adminCura', 'adminCura');
 
-                $rep = $bdd->query('SELECT * FROM services');
+                $rep = $bdd->query('SELECT * FROM ailleurs');
                 foreach ($rep as $repBis)
                 {
                     echo '<tr>';
@@ -149,7 +145,7 @@ if ($_SESSION['admin'] != '1') {
         var site = $('#site').val();
 
 
-        if (nom !== '' && adresse !== '' && categorie !== '')
+        if (nom !== '' && adresse !== '' && categorie !== '' && site !== '')
         {
             var geocoder;
 
@@ -171,16 +167,17 @@ if ($_SESSION['admin'] != '1') {
                     console.log(results[0].formatted_address);
                     console.log(results[0].geometry.location.lat());
                     console.log(results[0].geometry.location.lng());
-                    var dataString = 'nom=' + nom + "&adresse=" + results[0].formatted_address + "&lat=" + results[0].geometry.location.lat() + "&lng=" + results[0].geometry.location.lng() + "&site=" + site + "&categorie=" + categorie + "&action=add";
+                    var dataString = 'nom=' + nom + "&adresse=" + results[0].formatted_address + "&site=" + site + "&categorie=" + categorie + "&action=add";
                     $.ajax({
                         type: "POST",
-                        url: "editServices.php",
+                        url: "editAilleurs.php",
                         data: dataString,
                         success: function(resultData){
                             $('#nom').val("");
                             $('#adresse').val("");
                             $('#categorie').val("");
                             $('#site').val("");
+                            location.reload();
                         }
                     });
                     console.log(dataString);
@@ -204,7 +201,7 @@ if ($_SESSION['admin'] != '1') {
             var dataString = "id=" + $(this).val() + "&action=delete";
             $.ajax({
                 type: "POST",
-                url: "editServices.php",
+                url: "editAilleurs.php",
                 data: dataString,
                 success: function(resultData){
                     location.reload();
