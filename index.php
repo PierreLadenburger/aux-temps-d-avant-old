@@ -14,11 +14,8 @@
     <!-- Custom fonts for this template -->
     <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
-    <link href="vendor/devicons/css/devicons.min.css" rel="stylesheet">
-    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
     <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/blitzer/jquery-ui.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
     <!--  <link href="vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"> -->
 
 
@@ -190,37 +187,17 @@
                 <div class="row" style="text-align: center">
                     <div class="col-lg-6 col-md-6 col-sm-6" style="text-align: left; margin-top: 20px;">
                         <div style="color : rgb(53, 57, 66);"><strong>Equipements</strong></div>
-                        <div style="color : rgb(53, 57, 66);"><img src="img/hairdryer.png"
-                                                                   style="height: 20px; width: 20px; margin-right: 14px;">Sèche
-                            cheveux
-                        </div>
-                        <div style="color : rgb(53, 57, 66); padding-left: 3px;"><i style="margin-right: 4px;"
-                                                                                    class="fa fa-shower"></i> Douche à
-                            l'italienne
-                        </div>
-                        <div style="color : rgb(53, 57, 66);"><img src="img/toilette.png"
-                                                                   style="height: 20px; width: 20px; margin-right: 13px;">WC
-                            privé
-                        </div>
-                        <div style="color : rgb(53, 57, 66);"><i style="margin-right: 7px;" class="fa fa-wifi"></i> Wifi
-                        </div>
-                        <div style="color : rgb(53, 57, 66);"><i style="margin-right: 8px;"
-                                                                 class="fa fa-television"></i> Télévison
-                        </div>
-                        <div style="color : rgb(53, 57, 66);"><i style="color : rgb(53, 57, 66); margin-right: 9px;"
-                                                                 class="fa fa-bed"></i> Lit double 2 x 90 x 200 cm
-                        </div>
-                        <div style="color : rgb(53, 57, 66);"><i style="color : rgb(53, 57, 66); margin-right: 9px;"
-                                                                 class="fa fa-bed"></i> Lit simple 80 x 200 cm
-                        </div>
-                        <div style="color : rgb(53, 57, 66);"><img src="img/frigo.png" style="height: 20px; width: 20px; margin-right: 13px;"
-                            > Mini réfrigérateur
-                        </div>
-                        <br>
+                            <div style="color : rgb(53, 57, 66);"><img src="img/hairdryer.png" style="height: 20px; width: 20px; margin-right: 15px;"> Sèche cheveux</div>
+                            <div style="color : rgb(53, 57, 66);"><i style="margin-right: 12px;" class="fas fa-shower"></i> Douche à l'italienne</div>
+                            <div style="color : rgb(53, 57, 66);"><i style="margin-right: 16px;" class="fas fa-toilet"></i> WC privé</div>
+                            <div style="color : rgb(53, 57, 66);"><i style="margin-right: 7px;" class="fas fa-wifi"></i> Wifi</div>
+                            <div style="color : rgb(53, 57, 66);"><i style="margin-right: 8px;" class="fas fa-tv"></i> Télévison</div>
+                            <div style="color : rgb(53, 57, 66);"><i style="color : rgb(53, 57, 66); margin-right: 9px;" class="fas fa-bed"></i> Lit double 2 x 90 x 200 cm</div>
+                            <div style="color : rgb(53, 57, 66);"><i style="color : rgb(53, 57, 66); margin-right: 9px;" class="fas fa-bed"></i> Lit simple 80 x 200 cm</div>
+                            <div style="color : rgb(53, 57, 66);"><img src="img/frigo.png" style="height: 20px; width: 20px; margin-right: 13px;"> Mini réfrigérateur</div>
+                            <br>
                         <div style="color : rgb(53, 57, 66);"><strong>Egalement Disponible</strong></div>
-                        <div style="color : rgb(53, 57, 66);"><i style="color : rgb(53, 57, 66); margin-right: 4px;"
-                                                                 class="fa fa-bed"></i> Lit bébé
-                        </div>
+                            <div style="color : rgb(53, 57, 66);"><i style="color : rgb(53, 57, 66); margin-right: 4px;" class="fas fa-bed"></i> Lit bébé</div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6" style="margin-top: 20px;">
                         <div style="color : rgb(53, 57, 66); text-align: left"><strong> Disponibilités de La
@@ -334,35 +311,17 @@
                 <div class="row" style="text-align: center">
                     <div class="col-md-6 col-lg-6 col-sm-6" style="text-align: left; margin-top: 20px;">
                         <div style="color : rgb(53, 57, 66);"><strong>Equipements</strong></div>
-                        <div style="color : rgb(53, 57, 66);"><img src="img/hairdryer.png"
-                                                                   style="height: 20px; width: 20px; margin-right: 14px;">Sèche
-                            cheveux
-                        </div>
-                        <div style="color : rgb(53, 57, 66); padding-left: 3px;"><i style="margin-right: 4px;"
-                                                                                    class="fa fa-shower"></i> Douche à
-                            l'italienne
-                        </div>
-                        <div style="color : rgb(53, 57, 66);"><img src="img/toilette.png"
-                                                                   style="height: 20px; width: 20px; margin-right: 13px;">WC
-                            privé
-                        </div>
-                        <div style="color : rgb(53, 57, 66);"><i style="margin-right: 7px;" class="fa fa-wifi"></i> Wifi
-                        </div>
-                        <div style="color : rgb(53, 57, 66);"><i style="margin-right: 8px;"
-                                                                 class="fa fa-television"></i> Télévison
-                        </div>
-                        <div style="color : rgb(53, 57, 66);"><i style="color : rgb(53, 57, 66); margin-right: 9px;"
-                                                                 class="fa fa-bed"></i> Lit double 2 x 90 x 200 cm
-                        </div>
-                        <div style="color : rgb(53, 57, 66);"><img src="img/frigo.png" style="height: 20px; width: 20px; margin-right: 13px;"
-                                              > Mini réfrigérateur
-                        </div>
-                        <br>
+                            <div style="color : rgb(53, 57, 66);"><img src="img/hairdryer.png" style="height: 20px; width: 20px; margin-right: 15px;"> Sèche cheveux</div>
+                            <div style="color : rgb(53, 57, 66);"><i style="margin-right: 12px;" class="fas fa-shower"></i> Douche à l'italienne</div>
+                            <div style="color : rgb(53, 57, 66);"><i style="margin-right: 16px;" class="fas fa-toilet"></i> WC privé</div>
+                            <div style="color : rgb(53, 57, 66);"><i style="margin-right: 7px;" class="fas fa-wifi"></i> Wifi</div>
+                            <div style="color : rgb(53, 57, 66);"><i style="margin-right: 8px;" class="fas fa-tv"></i> Télévison</div>
+                            <div style="color : rgb(53, 57, 66);"><i style="color : rgb(53, 57, 66); margin-right: 9px;" class="fas fa-bed"></i> Lit double 2 x 90 x 200 cm</div>
+                            <div style="color : rgb(53, 57, 66);"><img src="img/frigo.png" style="height: 20px; width: 20px; margin-right: 13px;"> Mini réfrigérateur</div>
+                            <br>
                         <div style="color : rgb(53, 57, 66);"><strong>Egalement Disponible</strong></div>
-                        <div style="color : rgb(53, 57, 66);"><i style="color : rgb(53, 57, 66); margin-right: 4px;"
-                                                                 class="fa fa-bed"></i> Lit bébé
+                            <div style="color : rgb(53, 57, 66);"><i style="color : rgb(53, 57, 66); margin-right: 4px;" class="fas fa-bed"></i> Lit bébé</div>
                         </div>
-                    </div>
                     <div class="col-md-6 col-md-6 col-sm-6" style="margin-top: 20px;">
                         <div style="color : rgb(53, 57, 66); text-align: left;"><strong>Disponibilités de La
                                 Grange</strong></div>
@@ -428,31 +387,12 @@
                 <div class="row" style="text-align: center">
                     <div class="col-md-6 col-lg-6 col-sm-6" style="text-align: left; margin-top: 20px;">
                         <div style="color : rgb(53, 57, 66);"><strong>Equipements</strong></div>
-                        <div style="color : rgb(53, 57, 66);"><img src="img/hairdryer.png"
-                                                                   style="height: 20px; width: 20px; margin-right: 14px;">Sèche
-                            cheveux
-                        </div>
-                        <div style="color : rgb(53, 57, 66); padding-left: 3px;"><i style="margin-right: 4px;"
-                                                                                    class="fa fa-shower"></i> Douche à
-                            l'italienne
-                        </div>
-                        <div style="color : rgb(53, 57, 66);"><img src="img/toilette.png"
-                                                                   style="height: 20px; width: 20px; margin-right: 13px;">WC
-                            privé
-                        </div>
-                        <div style="color : rgb(53, 57, 66);"><i style="margin-right: 7px;" class="fa fa-wifi"></i> Wifi
-                        </div>
-                        <div style="color : rgb(53, 57, 66);"><i style="margin-right: 8px;"
-                                                                 class="fa fa-television"></i> Télévison
-                        </div>
-                        <div style="color : rgb(53, 57, 66);"><i style="color : rgb(53, 57, 66); margin-right: 9px;"
-                                                                 class="fa fa-bed"></i> Lit double 2 x 90 x 200 cm
-                        </div>
-                        <br>
-                        <div style="color : rgb(53, 57, 66);"><strong>Egalement Disponible</strong></div>
-                        <div style="color : rgb(53, 57, 66);"><i style="color : rgb(53, 57, 66); margin-right: 4px;"
-                                                                 class="fa fa-bed"></i> Lit bébé
-                        </div>
+                        <div style="color : rgb(53, 57, 66);"><img src="img/hairdryer.png" style="height: 20px; width: 20px; margin-right: 15px;"> Sèche cheveux</div>
+                        <div style="color : rgb(53, 57, 66);"><i style="margin-right: 12px;" class="fas fa-shower"></i> Douche à l'italienne</div>
+                        <div style="color : rgb(53, 57, 66);"><i style="margin-right: 16px;" class="fas fa-toilet"></i> WC privé</div>
+                        <div style="color : rgb(53, 57, 66);"><i style="margin-right: 7px;" class="fas fa-wifi"></i> Wifi</div>
+                        <div style="color : rgb(53, 57, 66);"><i style="margin-right: 8px;" class="fas fa-tv"></i> Télévison</div>
+                        <div style="color : rgb(53, 57, 66);"><i style="color : rgb(53, 57, 66); margin-right: 9px;" class="fas fa-bed"></i> Lit double 2 x 90 x 200 cm</div>
                     </div>
                     <div class="col-md-6 col-md-6 col-sm-6" style="margin-top: 20px;">
                         <div style="color : rgb(53, 57, 66); text-align: left"><strong>Disponibilités de
@@ -698,7 +638,6 @@
         });
     });
 </script>
-<script type="text/javascript" src="planning.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.js"></script>
 <!-- Custom scripts for this template -->

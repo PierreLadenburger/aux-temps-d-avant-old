@@ -53,8 +53,11 @@
                                        " . $repBis['nom'] .
                             "</div>                                    
                                     <div class='text'>". $repBis['adresse'] .
-                            "</div>
-                             <button style='background-color: darkred; border-color: darkred;' class='btn btn-info' id='road' value='". $repBis['lat'] . "|" . $repBis['lng'] . "|" . $repBis['nom'] . "'><i class='fas fa-map-marker-alt'></i></button>
+                            "</div>";
+                        if (!empty($repBis['site'])) {
+                            echo "<a style='color: darkred;' href='".$repBis['site'] ."'>" . $repBis['site'] ."</a><br>";
+                        }
+                        echo "<button style='background-color: darkred; border-color: darkred;' class='btn btn-info' id='road' value='". $repBis['lat'] . "|" . $repBis['lng'] . "|" . $repBis['nom'] . "|" . $repBis['temps'] ."'><i class='fas fa-map-marker-alt'></i></button>
                              <br><br>                                   
                              </div>";
                     }
@@ -106,7 +109,7 @@
         var lat = 48.903975;
         var lng = 7.661313;
         var url = "https://api.openrouteservice.org/directions?api_key=5b3ce3597851110001cf62489a2884c06fc546dd91438fa7e6046fb7&coordinates="+ lng + "," + lat + "|" + coordinates[1] + "," + coordinates[0] + "&profile=driving-car&geometry=true&geometry_format=polyline";
-        console.log(coordinates[0]);
+        console.log(coordinates[3]);
             //var dataString = "id=" + $(this).val() + "&type=delete";
             $.ajax({
                 type: "GET",
@@ -114,24 +117,30 @@
                 success: function(resultData){
 
                     var pos = new google.maps.LatLng(coordinates[0], coordinates[1]);
-                    var dist = resultData.routes[0].summary.distance / 1000;
-                    var time = resultData.routes[0].summary.duration / 60;
+
+
+
+                    if (coordinates[3] != 0)
+                        var time = coordinates[3];
+                    else
+                        var time = resultData.routes[0].summary.duration / 60;
+                        var dist = resultData.routes[0].summary.distance / 1000;
                     var marker = new google.maps.Marker({
                         position: pos,
                         map: map,
                         name: "Aux tem",
-                        title: coordinates[2] + "\ndistance: " + dist.toFixed(2) + " km\ntemps: " + time.toFixed(0) + " min",
+                        title: coordinates[2] + "\ndistance: " + dist.toFixed(2) + " km\ntemps: " + parseFloat(time).toFixed(0) + " min",
                         icon: "img/red_MarkerA.png"
 
                 });
                     var flightPlanCoordinates = [];
                     var pathCoordinates = resultData.routes[0].geometry;
                     pathCoordinates.forEach(function (element) {
-                        console.log(parseFloat(element[0]));
-                        console.log(element[1]);
+                        /*console.log(parseFloat(element[0]));
+                        console.log(element[1]);*/
                         flightPlanCoordinates.push(new google.maps.LatLng(element[1], element[0]));
                     });
-                    console.log(flightPlanCoordinates);
+                    //console.log(flightPlanCoordinates);
 
 
                     flightPath = new google.maps.Polyline({

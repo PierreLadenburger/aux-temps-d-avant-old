@@ -53,10 +53,14 @@
                                        " . $repBis['nom'] .
                             "</div>                                    
                                     <div class='text'>". $repBis['adresse'] .
-                            "</div>
-                             <button style='background-color: darkred; border-color: darkred;' class='btn btn-info' id='road' value='". $repBis['lat'] . "|" . $repBis['lng'] . "|" . $repBis['nom'] . "'><i class='fas fa-map-marker-alt'></i></button>
+                            "</div>";
+                        if (!empty($repBis['site'])) {
+                            echo "<a style='color: darkred;' href='".$repBis['site'] ."'>" . $repBis['site'] ."</a><br>";
+                        }
+                        echo "<button style='background-color: darkred; border-color: darkred;' class='btn btn-info' id='road' value='". $repBis['lat'] . "|" . $repBis['lng'] . "|" . $repBis['nom'] . "'><i class='fas fa-map-marker-alt'></i></button>
                              <br><br>                                   
                              </div>";
+
                     }
                 }
                 catch (PDOException $exception)

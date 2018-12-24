@@ -181,6 +181,7 @@ if ($_SESSION['admin'] != '1') {
                             $('#adresse').val("");
                             $('#categorie').val("");
                             $('#site').val("");
+                            location.reload();
                         }
                     });
                     console.log(dataString);

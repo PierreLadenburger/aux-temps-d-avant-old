@@ -10,14 +10,15 @@ if (isset($_POST['nom']) AND isset($_POST['adresse']) AND isset($_POST['lat']) A
     && strcmp($_POST['action'], "add") == 0)
 {
     $bdd = new PDO('mysql:host=localhost;dbname=aux-temps-d-avant;charset=utf8', 'adminCura', 'adminCura');
-    $add = $bdd->prepare("INSERT INTO services(nom, adresse, lat, lng, site, categorie) VALUES (:nom, :adresse, :lat, :lng, :site ,:categorie)");
+    $add = $bdd->prepare("INSERT INTO services(nom, adresse, lat, lng, site, categorie, temps) VALUES (:nom, :adresse, :lat, :lng, :site ,:categorie, :temps)");
     $add->execute(array(
         "nom" => $_POST['nom'],
         "adresse" => $_POST['adresse'],
         "lat" => $_POST['lat'],
         "lng" => $_POST['lng'],
         "site" => $_POST['site'],
-        "categorie" => $_POST['categorie']
+        "categorie" => $_POST['categorie'],
+        "temps" => 0
     ));
     echo 'Added successfully';
 }

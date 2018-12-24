@@ -167,7 +167,7 @@ if ($_SESSION['admin'] != '1') {
                     console.log(results[0].formatted_address);
                     console.log(results[0].geometry.location.lat());
                     console.log(results[0].geometry.location.lng());
-                    var dataString = 'nom=' + nom + "&adresse=" + results[0].formatted_address + "&site=" + site + "&categorie=" + categorie + "&action=add";
+                    var dataString = 'nom=' + nom + "&adresse=" + results[0].formatted_address + "&lat=" + results[0].geometry.location.lat() + "&lng=" + results[0].geometry.location.lng() + "&site=" + site + "&categorie=" + categorie + "&action=add";
                     $.ajax({
                         type: "POST",
                         url: "editAilleurs.php",

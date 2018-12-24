@@ -49,8 +49,8 @@ if (isset($_POST['name']) && isset($_POST['firstname']) && isset($_POST['email']
     $mail->isHTML(true);
 
 //Set who the message is to be sent to
-//    $mail->addAddress('carinecura@gmail.com');
-    $mail->addAddress('pladenburger67@gmail.com');
+    $mail->addAddress('carinecura@gmail.com');
+ //   $mail->addAddress('pladenburger67@gmail.com');
 //Set the subject line
     $mail->Subject = 'Message';
 
